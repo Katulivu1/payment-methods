@@ -62,7 +62,8 @@
           <li>60,000 UGX</li>
           <li>400 Zambian Kwacha</li>
         </ul>
-        <p class="muted">👉🏿 <strong>STRICTLY NO PAY AFTER, NO FREE FIXED MATCHES AND NO HALF PAYMENTS.</strong></p>
+        <p class="muted">Pay the exact amount to avoid inconveniences.</p>
+        <p class="muted">👉🏿 <strong><u>STRICTLY NO PAY AFTER, NO FREE FIXED MATCHES AND NO HALF PAYMENTS.</u></strong></p>
       </div>
     </section>
 
@@ -127,20 +128,30 @@
     }
 
     function toggleDetails(id){
-      const elem=document.getElementById(id);
-      elem.style.display=elem.style.display==='block'?'none':'block';
+      const elem = document.getElementById(id);
+      elem.style.display = elem.style.display === 'block' ? 'none' : 'block';
     }
 
     function copyText(text){
-      navigator.clipboard.writeText(text).then(()=>{
-        alert("Copied: "+text);
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Copied: " + text);
+        // Collapse the payment details after copying
+        const elem = document.querySelector(`#${text.replace(/[^a-zA-Z0-9]/g, '')}`);
+        if (elem) elem.style.display = 'none';
       });
     }
 
-    const groupPhoto=document.getElementById('groupPhoto');
-    const popup=document.getElementById('popupPhoto');
-    groupPhoto.addEventListener('click',()=>{
-      popup.style.display='block';
+    const groupPhoto = document.getElementById('groupPhoto');
+    const popup = document.getElementById('popupPhoto');
+    groupPhoto.addEventListener('click', () => {
+      popup.style.display = 'block';
+    });
+
+    // Close popup when clicking outside or on the image
+    document.addEventListener('click', (e) => {
+      if (popup.style.display === 'block' && !popup.contains(e.target) && e.target !== groupPhoto) {
+        popup.style.display = 'none';
+      }
     });
   </script>
 </body>
