@@ -11,7 +11,7 @@
     body{font-family:Inter,system-ui,Arial,sans-serif;margin:0;background:#ffffff;color:#0f1724}
     .container{max-width:980px;margin:36px auto;padding:20px}
     header{display:flex;gap:20px;align-items:center;background:linear-gradient(180deg,#071023 0%, #071621 100%);padding:20px;border-radius:12px;color:#e6eef6}
-    .brand-img{width:120px;height:120px;flex:0 0 120px;border-radius:12px;object-fit:cover;cursor:pointer}
+    .brand-img{width:120px;height:120px;flex:0 0 120px;border-radius:50%;object-fit:cover;cursor:pointer}
     h1{margin:0;font-size:28px}
     p.lead{margin:6px 0;color:var(--muted)}
     .card{background:#f8f9fb;padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(2,8,23,.1)}
@@ -21,20 +21,26 @@
     .charges-grid li{background:#eef2f7;padding:10px;border-radius:8px;text-align:center}
     .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:9px;background:var(--accent);color:#04202f;text-decoration:none;font-weight:700}
     .btn svg{width:18px;height:18px}
-    .payments-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;list-style:none;padding:0;margin:12px 0}
-    .payments-grid li{background:#eef2f7;padding:10px;border-radius:8px;text-align:center}
+    .payments-list{list-style:none;padding:0;margin:12px 0}
+    .payments-list li{margin-bottom:10px}
+    .payment-header{background:#eef2f7;padding:10px;border-radius:8px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+    .payment-details{display:none;background:#fff;padding:10px;border:1px solid #ccc;border-radius:8px;margin-top:5px;font-size:14px}
+    .copy-btn{margin-top:5px;padding:6px 10px;font-size:12px;border:none;border-radius:6px;background:var(--accent);color:#fff;cursor:pointer}
     #vipSection{display:none;margin-top:20px}
-    /* overlay modal */
-    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:1000}
-    .modal{background:#fff;padding:20px;border-radius:12px;max-width:90%;max-height:90%;box-shadow:0 6px 18px rgba(0,0,0,.4)}
-    .modal img{max-width:100%;border-radius:12px}
-    .close{margin-top:10px;display:inline-block;background:#f2f2f2;padding:8px 12px;border-radius:8px;cursor:pointer}
+    /* profile popup */
+    .popup{position:absolute;top:140px;left:40px;background:#fff;padding:10px;border-radius:50%;box-shadow:0 4px 12px rgba(0,0,0,.3);display:none;z-index:2000}
+    .popup img{width:160px;height:160px;border-radius:50%;object-fit:cover}
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <img src="images/profile.png" alt="Group photo" class="brand-img" id="groupPhoto">
+      <div style="position:relative">
+        <img src="images/profile.png" alt="Group photo" class="brand-img" id="groupPhoto">
+        <div class="popup" id="popupPhoto">
+          <img src="images/profile.png" alt="Profile full view">
+        </div>
+      </div>
       <div>
         <h1>COLIN BRIGHT TIPS</h1>
         <p class="lead">Join COLIN BRIGHT TIPS VIP for curated, high-value betting tips and tickets. Choose a currency below, pay using any supported method, then send proof to our Telegram handle to receive the VIP link.</p>
@@ -63,17 +69,39 @@
     <section style="margin-top:26px">
       <h2 style="margin:0 0 8px">Payment Methods</h2>
       <div class="card">
-        <ul class="payments-grid">
-          <li>USDT</li>
-          <li>Skrill</li>
-          <li>Eversend</li>
-          <li>Bitcoin</li>
-          <li>Binance</li>
-          <li>Perfect Money</li>
-          <li>MTN Mobile Money (Ghana)</li>
-          <li>Bank Transfer (Nigeria)</li>
-          <li>M-Pesa</li>
-          <li>Airtel Money</li>
+        <ul class="payments-list">
+          <li>
+            <div class="payment-header" onclick="toggleDetails('usdt')">USDT (TRC20)<span>▼</span></div>
+            <div class="payment-details" id="usdt">Address: TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW<br><button class="copy-btn" onclick="copyText('TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW')">Copy</button></div>
+          </li>
+          <li>
+            <div class="payment-header" onclick="toggleDetails('skrill')">Skrill<span>▼</span></div>
+            <div class="payment-details" id="skrill">Email: muthuricollins43@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins43@gmail.com')">Copy</button></div>
+          </li>
+          <li>
+            <div class="payment-header" onclick="toggleDetails('eversend')">Eversend<span>▼</span></div>
+            <div class="payment-details" id="eversend">Link: <a href="https://eversend.me/collm" target="_blank">https://eversend.me/collm</a></div>
+          </li>
+          <li>
+            <div class="payment-header" onclick="toggleDetails('binance')">Binance<span>▼</span></div>
+            <div class="payment-details" id="binance">ID: 439629329<br><button class="copy-btn" onclick="copyText('439629329')">Copy</button></div>
+          </li>
+          <li>
+            <div class="payment-header" onclick="toggleDetails('mtn')">MTN Mobile Money (Ghana)<span>▼</span></div>
+            <div class="payment-details" id="mtn">DM on Telegram for guidance.</div>
+          </li>
+          <li>
+            <div class="payment-header" onclick="toggleDetails('bank')">Bank Transfer (Nigeria)<span>▼</span></div>
+            <div class="payment-details" id="bank">DM on Telegram for guidance.</div>
+          </li>
+          <li>
+            <div class="payment-header" onclick="toggleDetails('mpesa')">M-Pesa<span>▼</span></div>
+            <div class="payment-details" id="mpesa">Name: ZIPPORAH JOSHUA<br>Number: +254706415082<br><button class="copy-btn" onclick="copyText('+254706415082')">Copy</button></div>
+          </li>
+          <li>
+            <div class="payment-header" onclick="toggleDetails('airtel')">Airtel Money<span>▼</span></div>
+            <div class="payment-details" id="airtel">Name: COLLINS MUTHURI<br>Number: +254784223005<br><button class="copy-btn" onclick="copyText('+254784223005')">Copy</button></div>
+          </li>
         </ul>
       </div>
     </section>
@@ -93,29 +121,27 @@
     </footer>
   </div>
 
-  <!-- Profile modal -->
-  <div class="overlay" id="overlay">
-    <div class="modal">
-      <img src="images/profile.png" alt="Profile full view">
-      <div class="close" onclick="closeModal()">Close</div>
-    </div>
-  </div>
-
   <script>
-    // Simulate confirmation - in real deployment, you would validate payment before showing
     function confirmPayment(){
       document.getElementById('vipSection').style.display = 'block';
     }
 
-    // Profile modal
-    const groupPhoto = document.getElementById('groupPhoto');
-    const overlay = document.getElementById('overlay');
-    groupPhoto.addEventListener('click', ()=>{
-      overlay.style.display = 'flex';
-    });
-    function closeModal(){
-      overlay.style.display = 'none';
+    function toggleDetails(id){
+      const elem=document.getElementById(id);
+      elem.style.display=elem.style.display==='block'?'none':'block';
     }
+
+    function copyText(text){
+      navigator.clipboard.writeText(text).then(()=>{
+        alert("Copied: "+text);
+      });
+    }
+
+    const groupPhoto=document.getElementById('groupPhoto');
+    const popup=document.getElementById('popupPhoto');
+    groupPhoto.addEventListener('click',()=>{
+      popup.style.display='block';
+    });
   </script>
 </body>
 </html>
