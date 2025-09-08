@@ -14,30 +14,13 @@
     .brand-img{width:120px;height:120px;flex:0 0 120px;border-radius:12px;object-fit:cover;background:linear-gradient(90deg,#102032,#16304a)}
     h1{margin:0;font-size:28px}
     p.lead{margin:6px 0;color:var(--muted)}
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:18px}
     .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(2,8,23,.6)}
-    .price{font-size:20px;font-weight:700;color:var(--accent)}
-    .btn{display:inline-block;padding:10px 14px;border-radius:9px;background:var(--accent);color:#04202f;text-decoration:none;font-weight:700}
     .muted{color:var(--muted);font-size:13px}
-    .payments{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-    .method{background:#091422;padding:10px 12px;border-radius:10px;min-width:120px;text-align:center;cursor:pointer;border:1px solid rgba(255,255,255,.03)}
-    .method img{width:28px;height:28px;display:block;margin:0 auto 6px}
     footer{margin-top:30px;color:var(--muted);font-size:14px}
-
-    /* payment grid for charges */
     .charges-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;list-style:none;padding:0;margin:12px 0}
     .charges-grid li{background:#071428;padding:10px;border-radius:8px;text-align:center}
-
-    /* modal */
-    .overlay{position:fixed;inset:0;background:rgba(2,6,12,.6);display:none;align-items:center;justify-content:center;padding:20px}
-    .modal{background:#061225;padding:18px;border-radius:12px;max-width:520px;width:100%;box-shadow:0 10px 30px rgba(2,8,23,.8)}
-    .modal h3{margin-top:0}
-    .field{background:#071428;padding:12px;border-radius:8px;margin:8px 0;display:flex;align-items:center;justify-content:space-between}
-    .small{font-size:13px;color:var(--muted)}
-    .copy-btn{background:transparent;border:1px solid rgba(255,255,255,.06);padding:8px;border-radius:8px;color:var(--muted);cursor:pointer}
-    .close{background:transparent;border:0;color:var(--muted);cursor:pointer;font-size:18px}
-
-    @media (max-width:560px){header{flex-direction:column;align-items:flex-start}.brand-img{width:96px;height:96px}}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:9px;background:var(--accent);color:#04202f;text-decoration:none;font-weight:700}
+    .btn svg{width:18px;height:18px}
   </style>
 </head>
 <body>
@@ -47,7 +30,6 @@
       <div>
         <h1>COLIN BRIGHT TIPS</h1>
         <p class="lead">Join COLIN BRIGHT TIPS VIP for curated, high-value betting tips and tickets. Choose a currency below, pay using any supported method, then send proof to our Telegram handle to receive the VIP link.</p>
-        <p class="muted">Replace the group photo by updating the <code>#groupPhoto</code> <em>src</em> attribute.</p>
       </div>
     </header>
 
@@ -73,31 +55,21 @@
     <section style="margin-top:26px">
       <h2 style="margin:0 0 8px">Payment Methods</h2>
       <div class="card">
-        <ul>
-          <li>USDT, Skrill, Eversend, Bitcoin, Binance, & Perfect Money</li>
-          <li>MTN Mobile Money (Ghana)</li>
-          <li>Bank Transfer (Nigeria)</li>
-          <li>M-Pesa</li>
-          <li>Airtel Money</li>
-        </ul>
+        <p>USDT, Skrill, Eversend, Bitcoin, Binance, Perfect Money</p>
+        <p>MTN Mobile Money (Ghana), Bank Transfer (Nigeria), M-Pesa, Airtel Money</p>
       </div>
     </section>
 
     <footer>
       <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
         <div class="muted">After payment: send proof on Telegram to receive the VIP invite link.</div>
-        <a class="btn" href="https://t.me/on_coole" target="_blank">Send proof (Telegram)</a>
-        <a class="btn" style="background:#00aaff;color:#04202f" href="#" onclick="copyVIP()">Copy VIP link</a>
+        <a class="btn" href="https://t.me/on_coole" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M9.2 16.2 8.8 20c.6 0 .8-.3 1.1-.6l2.6-2.5 5.4 3.9c1 .5 1.7.2 2-.9l3.6-16.9c.4-1.7-.6-2.3-1.6-1.9L1.6 9.7c-1.7.7-1.7 1.6-.3 2l5.7 1.8 13.3-8.2c.6-.4 1.2-.2.7.2"/></svg>
+          Send proof (Telegram)
+        </a>
       </div>
-      <div style="margin-top:10px" class="muted">VIP Channel: <span id="vipLink">https://t.me/on_coole</span></div>
+      <div style="margin-top:10px" class="muted">VIP Channel: <a href="https://t.me/on_coole" target="_blank">https://t.me/on_coole</a></div>
     </footer>
   </div>
-
-  <script>
-    function copyVIP(){
-      const txt = document.getElementById('vipLink').textContent;
-      navigator.clipboard.writeText(txt).then(()=>alert('VIP link copied!'));
-    }
-  </script>
 </body>
 </html>
