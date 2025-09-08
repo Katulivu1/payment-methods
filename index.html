@@ -8,22 +8,27 @@
   <style>
     :root{--accent:#0b84ff;--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2}
     *{box-sizing:border-box}
-    body{font-family:Inter,system-ui,Arial,sans-serif;margin:0;background:linear-gradient(180deg,#071023 0%, #071621 100%);color:#e6eef6}
+    body{font-family:Inter,system-ui,Arial,sans-serif;margin:0;background:#ffffff;color:#0f1724}
     .container{max-width:980px;margin:36px auto;padding:20px}
-    header{display:flex;gap:20px;align-items:center}
-    .brand-img{width:120px;height:120px;flex:0 0 120px;border-radius:12px;object-fit:cover;background:linear-gradient(90deg,#102032,#16304a)}
+    header{display:flex;gap:20px;align-items:center;background:linear-gradient(180deg,#071023 0%, #071621 100%);padding:20px;border-radius:12px;color:#e6eef6}
+    .brand-img{width:120px;height:120px;flex:0 0 120px;border-radius:12px;object-fit:cover;cursor:pointer}
     h1{margin:0;font-size:28px}
     p.lead{margin:6px 0;color:var(--muted)}
-    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(2,8,23,.6)}
+    .card{background:#f8f9fb;padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(2,8,23,.1)}
     .muted{color:var(--muted);font-size:13px}
-    footer{margin-top:30px;color:var(--muted);font-size:14px}
+    footer{margin-top:30px;color:#e6eef6;font-size:14px;background:linear-gradient(180deg,#071023 0%, #071621 100%);padding:20px;border-radius:12px}
     .charges-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;list-style:none;padding:0;margin:12px 0}
-    .charges-grid li{background:#071428;padding:10px;border-radius:8px;text-align:center}
+    .charges-grid li{background:#eef2f7;padding:10px;border-radius:8px;text-align:center}
     .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:9px;background:var(--accent);color:#04202f;text-decoration:none;font-weight:700}
     .btn svg{width:18px;height:18px}
     .payments-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;list-style:none;padding:0;margin:12px 0}
-    .payments-grid li{background:#071428;padding:10px;border-radius:8px;text-align:center}
+    .payments-grid li{background:#eef2f7;padding:10px;border-radius:8px;text-align:center}
     #vipSection{display:none;margin-top:20px}
+    /* overlay modal */
+    .overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:1000}
+    .modal{background:#fff;padding:20px;border-radius:12px;max-width:90%;max-height:90%;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+    .modal img{max-width:100%;border-radius:12px}
+    .close{margin-top:10px;display:inline-block;background:#f2f2f2;padding:8px 12px;border-radius:8px;cursor:pointer}
   </style>
 </head>
 <body>
@@ -81,11 +86,19 @@
           Send proof (Telegram)
         </a>
       </div>
-
       <div id="vipSection">
         <div style="margin-top:10px" class="muted">VIP Channel: <a href="https://t.me/on_coole" target="_blank">https://t.me/on_coole</a></div>
       </div>
+      <div style="margin-top:20px;text-align:center">© 2025 COLIN BRIGHT TIPS. All rights reserved.</div>
     </footer>
+  </div>
+
+  <!-- Profile modal -->
+  <div class="overlay" id="overlay">
+    <div class="modal">
+      <img src="images/profile.png" alt="Profile full view">
+      <div class="close" onclick="closeModal()">Close</div>
+    </div>
   </div>
 
   <script>
@@ -93,7 +106,16 @@
     function confirmPayment(){
       document.getElementById('vipSection').style.display = 'block';
     }
-    // For now, you can call confirmPayment() manually from console after testing
+
+    // Profile modal
+    const groupPhoto = document.getElementById('groupPhoto');
+    const overlay = document.getElementById('overlay');
+    groupPhoto.addEventListener('click', ()=>{
+      overlay.style.display = 'flex';
+    });
+    function closeModal(){
+      overlay.style.display = 'none';
+    }
   </script>
 </body>
 </html>
