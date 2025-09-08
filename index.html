@@ -9,24 +9,82 @@
   <style>
     :root {
       --accent: #0b84ff;
-      --bg: #0f1724;
+      --bg: #000000;
       --card: #0b1220;
       --muted: #9aa4b2;
-      --highlight: #ff4444; /* Vibrant red for warnings */
-      --fancy-bg: linear-gradient(135deg, #ff6f61, #6b5b95); /* Gradient for liveliness */
-      --fancy-text: #ffcc00; /* Bright yellow for accents */
+      --highlight: #ff4444;
+      --fancy-bg: linear-gradient(135deg, #ff6f61, #6b5b95);
+      --fancy-text: #ffcc00;
     }
     * { box-sizing: border-box }
     body {
       font-family: 'Inter', system-ui, Arial, sans-serif;
       margin: 0;
-      background: #ffffff;
+      background: var(--bg);
       color: #0f1724;
+      overflow-x: hidden;
+      position: relative;
+    }
+    /* Star Animation Background */
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      width: 2px;
+      height: 2px;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle 5s infinite;
+      z-index: -1;
+    }
+    body::before {
+      top: 10%;
+      left: 20%;
+      animation-delay: 0s;
+    }
+    body::after {
+      top: 70%;
+      left: 80%;
+      animation-delay: 2s;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+    /* Additional Stars */
+    body {
+      background: var(--bg);
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      width: 3px;
+      height: 3px;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle 7s infinite;
+      animation-delay: 1s;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 50%;
+      left: 30%;
+      width: 1px;
+      height: 1px;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle 4s infinite;
+      animation-delay: 3s;
     }
     .container {
       max-width: 980px;
       margin: 36px auto;
       padding: 20px;
+      position: relative;
+      z-index: 1;
     }
     header {
       display: flex;
@@ -38,6 +96,8 @@
       color: #e6eef6;
       font-family: 'Pacifico', cursive;
       font-size: 22px;
+      border: 3px solid var(--fancy-text);
+      box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
     }
     .brand-img {
       width: 120px;
@@ -62,6 +122,7 @@
       border-radius: 12px;
       box-shadow: 0 6px 18px rgba(2, 8, 23, .1);
       border: 2px solid var(--accent);
+      background: linear-gradient(135deg, #ffffff, #f0f0f0);
     }
     .muted { color: var(--muted); font-size: 13px }
     footer {
@@ -72,6 +133,8 @@
       padding: 20px;
       border-radius: 12px;
       font-family: 'Pacifico', cursive;
+      border: 2px solid var(--fancy-text);
+      box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
     }
     .charges-grid {
       display: grid;
@@ -84,10 +147,16 @@
     .charges-grid li {
       background: #eef2f7;
       padding: 10px;
-      border-radius: 8px;
+      border-radius: 12px;
       text-align: center;
       font-family: 'Dancing Script', cursive;
-      color: var(--fancy-text);
+      color: #000000; /* Black text for charges */
+      border: 2px solid var(--accent);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    .charges-grid li:hover {
+      transform: scale(1.05);
     }
     .btn {
       display: inline-flex;
@@ -112,23 +181,27 @@
     .payment-header {
       background: #eef2f7;
       padding: 10px;
-      border-radius: 8px;
+      border-radius: 12px;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-family: 'Pacifico', cursive;
       color: var(--fancy-text);
+      border: 2px solid var(--accent);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
     .payment-details {
       display: none;
       background: #fff;
       padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      border: 2px solid var(--accent);
+      border-radius: 12px;
       margin-top: 5px;
       font-size: 14px;
       font-family: 'Inter', sans-serif;
+      color: #000000; /* Black text for payment details */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
     .copy-btn {
       margin-top: 5px;
