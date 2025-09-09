@@ -15,34 +15,19 @@
       --highlight: #ff4444;
       --fancy-bg: linear-gradient(135deg, #ff6f61, #6b5b95);
       --fancy-text: #ffcc00;
-      --body-text: #0f1724;
-      --card-bg: #f8f9fb;
-      --charges-bg: #eef2f7;
-      --payment-header-bg: transparent;
-      --payment-details-bg: rgba(255, 255, 255, 0.95);
-    }
-    [data-theme="light"] {
-      --bg: #ffffff;
-      --body-text: #000000;
-      --card-bg: #f0f0f0;
-      --charges-bg: #e0e0e0;
-      --payment-header-bg: rgba(255, 255, 255, 0.8);
-      --payment-details-bg: rgba(0, 0, 0, 0.05);
-      --muted: #666666;
     }
     * { box-sizing: border-box }
     body {
       font-family: 'Inter', system-ui, Arial, sans-serif;
       margin: 0;
       background: var(--bg);
-      color: var(--body-text);
+      color: #0f1724;
       overflow-x: hidden;
       position: relative;
-      transition: background 0.3s ease, color 0.3s ease;
     }
-    /* Star Animation Background - Only in dark mode */
-    body[data-theme="dark"]::before,
-    body[data-theme="dark"]::after {
+    /* Star Animation Background */
+    body::before,
+    body::after {
       content: '';
       position: fixed;
       width: 2px;
@@ -52,12 +37,12 @@
       animation: twinkle 5s infinite;
       z-index: -1;
     }
-    body[data-theme="dark"]::before {
+    body::before {
       top: 10%;
       left: 20%;
       animation-delay: 0s;
     }
-    body[data-theme="dark"]::after {
+    body::after {
       top: 70%;
       left: 80%;
       animation-delay: 2s;
@@ -66,8 +51,11 @@
       0%, 100% { opacity: 0.3; }
       50% { opacity: 1; transform: scale(1.5); }
     }
-    /* Additional Stars - Only in dark mode */
-    body[data-theme="dark"]::after {
+    /* Additional Stars */
+    body {
+      background: var(--bg);
+    }
+    body::after {
       content: '';
       position: fixed;
       top: 30%;
@@ -79,7 +67,7 @@
       animation: twinkle 7s infinite;
       animation-delay: 1s;
     }
-    body[data-theme="dark"]::before {
+    body::before {
       content: '';
       position: fixed;
       top: 50%;
@@ -97,32 +85,6 @@
       padding: 20px;
       position: relative;
       z-index: 1;
-    }
-    /* Theme Toggle Button */
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: var(--fancy-bg);
-      border: 2px solid var(--fancy-text);
-      border-radius: 50%;
-      width: 40px; /* Smaller sun-like structure */
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 1000;
-      transition: transform 0.3s ease;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-    .theme-toggle:hover {
-      transform: scale(1.1);
-    }
-    .theme-toggle svg {
-      width: 20px; /* Smaller icon */
-      height: 20px;
-      fill: var(--fancy-text);
     }
     header {
       display: flex;
@@ -155,7 +117,7 @@
       color: var(--fancy-text);
     }
     .card {
-      background: var(--card-bg);
+      background: #f8f9fb;
       padding: 16px;
       border-radius: 12px;
       box-shadow: 0 6px 18px rgba(2, 8, 23, .1);
@@ -183,12 +145,12 @@
       margin: 12px 0;
     }
     .charges-grid li {
-      background: var(--charges-bg);
+      background: #eef2f7;
       padding: 10px;
       border-radius: 12px;
       text-align: center;
       font-family: 'Dancing Script', cursive;
-      color: #000000;
+      color: #000000; /* Black text for charges */
       border: 2px solid var(--accent);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s;
@@ -217,54 +179,53 @@
     .payments-list { list-style: none; padding: 0; margin: 12px 0 }
     .payments-list li { margin-bottom: 10px }
     .payment-header {
-      background: var(--payment-header-bg);
-      padding: 12px;
-      border: 3px solid var(--accent);
-      border-radius: 20px;
+      background: transparent; /* Hollow: no background fill */
+      padding: 12px; /* Slightly more padding for appeal */
+      border: 3px solid var(--accent); /* Bolder solid border for bold and appealing boundaries */
+      border-radius: 20px; /* Increased curve for appealing rounded design */
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-family: 'Pacifico', cursive;
-      color: var(--fancy-text);
-      box-shadow: 0 2px 8px rgba(11, 132, 255, 0.2);
+      color: var(--fancy-text); /* Yellow text for visibility */
+      box-shadow: 0 2px 8px rgba(11, 132, 255, 0.2); /* Subtle glow shadow for appeal */
       transition: transform 0.3s, border-color 0.3s, background 0.3s, box-shadow 0.3s;
-      font-weight: bold;
+      font-weight: bold; /* Bolder text for headers */
     }
     .payment-header:hover {
       transform: scale(1.02);
-      border-color: var(--fancy-text);
-      background: rgba(11, 132, 255, 0.1);
+      border-color: var(--fancy-text); /* Change to yellow on hover for appeal */
+      background: rgba(11, 132, 255, 0.1); /* Subtle bg on hover for appeal */
       box-shadow: 0 4px 12px rgba(11, 132, 255, 0.3);
     }
     .payment-header.open {
-      border-color: var(--fancy-text);
-      background: rgba(255, 204, 0, 0.1);
+      border-color: var(--fancy-text); /* Yellow border when open */
+      background: rgba(255, 204, 0, 0.1); /* Subtle yellow bg when open */
       box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3);
     }
     .payment-header span {
       transition: transform 0.3s;
-      color: var(--fancy-text); /* Orange/yellow for indication */
     }
     .payment-header.open span {
       transform: rotate(180deg);
     }
     .payment-details {
       display: none;
-      background: var(--payment-details-bg);
+      background: rgba(255, 255, 255, 0.95); /* Slightly more opaque for better visibility */
       padding: 12px;
-      border: 3px solid #000000; /* Black bold border for details */
-      border-radius: 20px;
+      border: 3px solid var(--accent); /* Bolder border for details tab */
+      border-radius: 20px; /* Matching curve */
       margin-top: 8px;
       font-size: 14px;
       font-family: 'Inter', sans-serif;
-      color: #000000;
-      box-shadow: 0 4px 12px rgba(11, 132, 255, 0.2);
-      backdrop-filter: blur(5px);
+      color: #000000; /* Black base text */
+      box-shadow: 0 4px 12px rgba(11, 132, 255, 0.2); /* Bolder shadow for appeal */
+      backdrop-filter: blur(5px); /* Light blur for modern feel */
       opacity: 0;
       transform: translateY(-10px);
       transition: opacity 0.3s ease, transform 0.3s ease;
-      font-weight: 500;
+      font-weight: 500; /* Semi-bold for overall text */
     }
     .payment-details.show {
       display: block;
@@ -272,38 +233,33 @@
       transform: translateY(0);
     }
     .payment-details strong {
-      color: var(--accent);
-      font-weight: bold;
+      color: var(--accent); /* Blue color for labels like "Address:", "Email:", etc. */
+      font-weight: bold; /* Bolder for labels */
     }
+    /* Style for section headings to make them visible */
     section h2 {
       margin: 0 0 8px;
-      color: var(--fancy-text);
+      color: var(--fancy-text); /* Visible yellow on dark background */
       font-family: 'Pacifico', cursive;
       font-size: 24px;
       padding: 10px;
       text-align: center;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Subtle shadow for better visibility */
     }
     .copy-btn {
       margin-top: 5px;
-      padding: 8px 12px; /* Slightly larger for better tap */
-      font-size: 14px; /* Increased font a little */
+      padding: 6px 10px;
+      font-size: 12px;
       border: none;
-      border-radius: 50%; /* Circle */
-      background: #000000; /* Black circle for good visibility */
-      color: #ffffff; /* White text on black */
+      border-radius: 6px;
+      background: var(--accent);
+      color: #fff;
       cursor: pointer;
       transition: background 0.3s;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
-    .copy-btn:hover { 
-      background: #333333; /* Darker on hover */
-    }
+    .copy-btn:hover { background: var(--highlight) }
     #vipSection { display: none; margin-top: 20px }
+    /* profile popup */
     .popup {
       position: absolute;
       top: 140px;
@@ -324,24 +280,7 @@
     }
   </style>
 </head>
-<body data-theme="dark">
-  <!-- Theme Toggle Button (Sun-like symbol) -->
-  <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="12" cy="12" r="5" fill="currentColor"/>
-      <g stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <line x1="12" y1="1" x2="12" y2="3"/>
-        <line x1="12" y1="21" x2="12" y2="23"/>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-        <line x1="1" y1="12" x2="3" y2="12"/>
-        <line x1="21" y1="12" x2="23" y2="12"/>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-      </g>
-    </svg>
-  </button>
-
+<body>
   <div class="container">
     <header>
       <div style="position:relative">
@@ -432,27 +371,11 @@
   </div>
 
   <script>
-    // Theme Toggle Function
-    function toggleTheme() {
-      const body = document.body;
-      const currentTheme = body.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      body.setAttribute('data-theme', newTheme);
-      // Optionally save to localStorage
-      localStorage.setItem('theme', newTheme);
-    }
-    // Load saved theme on page load
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedTheme = localStorage.getItem('theme') || 'dark';
-      document.body.setAttribute('data-theme', savedTheme);
-    });
-
     function confirmPayment(){
       document.getElementById('vipSection').style.display = 'block';
     }
 
-    function toggleDetails(id, event) {
-      event.stopPropagation(); // Prevent bubbling
+    function toggleDetails(id){
       // Close all payment details first (accordion behavior)
       const allDetails = document.querySelectorAll('.payment-details');
       allDetails.forEach(detail => {
@@ -476,20 +399,7 @@
       }
     }
 
-    // Close details when clicking outside
-    document.addEventListener('click', (event) => {
-      if (!event.target.closest('.payments-list')) {
-        const allDetails = document.querySelectorAll('.payment-details');
-        allDetails.forEach(detail => {
-          detail.classList.remove('show');
-          const header = detail.previousElementSibling;
-          if (header) header.classList.remove('open');
-        });
-      }
-    });
-
-    function copyText(text, id, event) {
-      event.stopPropagation(); // Prevent closing on copy
+    function copyText(text, id) {
       navigator.clipboard.writeText(text).then(() => {
         alert("Copied: " + text);
         // Collapse the payment details immediately after copying
@@ -504,8 +414,7 @@
 
     const groupPhoto = document.getElementById('groupPhoto');
     const popup = document.getElementById('popupPhoto');
-    groupPhoto.addEventListener('click', (e) => {
-      e.stopPropagation();
+    groupPhoto.addEventListener('click', () => {
       popup.style.display = 'block';
     });
 
