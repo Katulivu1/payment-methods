@@ -153,13 +153,12 @@
       border-radius: 8px;
       background: #fff;
       font-size: 14px;
-      color: #000; /* 👈 forced black text */
+      color: #000;
     }
     .payment-details.show {
       max-height: 200px;
       opacity: 1;
       padding: 12px;
-      color: #000; /* 👈 keep text black when expanded */
     }
 
     .copy-btn {
@@ -236,6 +235,125 @@
   </style>
 </head>
 <body>
-  <!-- The rest of your HTML remains unchanged -->
+  <div class="container">
+    <header>
+      <div style="position:relative">
+        <img src="images/profile.png" alt="Group photo" class="brand-img" id="groupPhoto">
+      </div>
+      <div>
+        <h1>COLIN BRIGHT TIPS</h1>
+        <p class="lead">Join COLIN BRIGHT TIPS VIP for curated, high-value betting tips and tickets. Choose a currency, pay with your method, then send proof to our Telegram to receive the VIP link.</p>
+      </div>
+    </header>
+
+    <section style="margin-top:22px">
+      <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">Monthly VIP Charges</h2>
+      <div class="card">
+        <ul class="charges-grid">
+          <li>25 USD / 25 Euros</li>
+          <li>0.00021 BTC</li>
+          <li>15,000 CFA Francs</li>
+          <li>250 Ghana Cedis</li>
+          <li>20,000 Naira</li>
+          <li>2,500 KSH</li>
+          <li>6,000 ZWL</li>
+          <li>50,000 TSH</li>
+          <li>60,000 UGX</li>
+          <li>400 Zambian Kwacha</li>
+        </ul>
+        <p style="text-align:center;font-weight:bold;font-size:18px;">⚠️ STRICTLY NO FREE MATCHES / HALF PAYMENTS</p>
+      </div>
+    </section>
+
+    <section style="margin-top:26px">
+      <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">Payment Methods</h2>
+      <div class="card">
+        <ul class="payments-list">
+          <li>
+            <div class="payment-header" onclick="toggleDetails('usdt')">USDT (TRC20)<span>▼</span></div>
+            <div class="payment-details" id="usdt"><strong>Address:</strong> TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW<br><button class="copy-btn" onclick="copyText('TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW')">Copy</button></div>
+          </li>
+          <li>
+            <div class="payment-header" onclick="toggleDetails('skrill')">Skrill<span>▼</span></div>
+            <div class="payment-details" id="skrill"><strong>Email:</strong> muthuricollins43@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins43@gmail.com')">Copy</button></div>
+          </li>
+          <li>
+            <div class="payment-header" onclick="toggleDetails('eversend')">Eversend<span>▼</span></div>
+            <div class="payment-details" id="eversend"><a href="https://eversend.me/collm" target="_blank">https://eversend.me/collm</a></div>
+          </li>
+          <li>
+            <div class="payment-header" onclick="toggleDetails('binance')">Binance<span>▼</span></div>
+            <div class="payment-details" id="binance"><strong>ID:</strong> 439629329<br><button class="copy-btn" onclick="copyText('439629329')">Copy</button></div>
+          </li>
+          <li>
+            <div class="payment-header" onclick="toggleDetails('mtn')">MTN Mobile Money (Ghana)<span>▼</span></div>
+            <div class="payment-details" id="mtn">DM on Telegram for guidance.</div>
+          </li>
+          <li>
+            <div class="payment-header" onclick="toggleDetails('bank')">Bank Transfer (Nigeria)<span>▼</span></div>
+            <div class="payment-details" id="bank">DM on Telegram for guidance.</div>
+          </li>
+          <li>
+            <div class="payment-header" onclick="toggleDetails('mpesa')">M-Pesa<span>▼</span></div>
+            <div class="payment-details" id="mpesa"><strong>Name:</strong> ZIPPORAH JOSHUA<br><strong>Number:</strong> +254706415082<br><button class="copy-btn" onclick="copyText('+254706415082')">Copy</button></div>
+          </li>
+          <li>
+            <div class="payment-header" onclick="toggleDetails('airtel')">Airtel Money<span>▼</span></div>
+            <div class="payment-details" id="airtel"><strong>Name:</strong> COLLINS MUTHURI<br><strong>Number:</strong> +254784223005<br><button class="copy-btn" onclick="copyText('+254784223005')">Copy</button></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <p>After payment, send proof on Telegram:</p>
+      <a class="btn" href="https://t.me/on_coole" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M9.2 16.2 8.8 20c.6 0 .8-.3 1.1-.6l2.6-2.5 5.4 3.9c1 .5 1.7.2 2-.9l3.6-16.9c.4-1.7-.6-2.3-1.6-1.9L1.6 9.7c-1.7.7-1.7 1.6-.3 2l5.7 1.8 13.3-8.2c.6-.4 1.2-.2.7.2"/></svg>
+        Send Proof (Telegram)
+      </a>
+      <p style="margin-top:15px;">© 2025 COLIN BRIGHT TIPS. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Popup -->
+  <div class="popup" id="popupPhoto">
+    <img src="images/profile.png" alt="Profile full view">
+  </div>
+
+  <script>
+    function toggleDetails(id) {
+      const elem = document.getElementById(id);
+      const header = elem.previousElementSibling;
+
+      const isOpen = elem.classList.contains('show');
+      document.querySelectorAll('.payment-details').forEach(d => d.classList.remove('show'));
+      document.querySelectorAll('.payment-header').forEach(h => h.classList.remove('open'));
+
+      if (!isOpen) {
+        elem.classList.add('show');
+        header.classList.add('open');
+      }
+    }
+
+    function copyText(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Copied: " + text);
+      });
+    }
+
+    const groupPhoto = document.getElementById('groupPhoto');
+    const popup = document.getElementById('popupPhoto');
+
+    groupPhoto.addEventListener('click', (e) => {
+      e.stopPropagation();
+      popup.classList.toggle('show');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (popup.classList.contains('show') && !popup.contains(e.target) && e.target !== groupPhoto) {
+        popup.classList.remove('show');
+      }
+    });
+  </script>
 </body>
 </html>
