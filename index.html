@@ -34,7 +34,7 @@
       position: relative;
     }
 
-    /* Background stars */
+    /* Background stars (optimized with multiple dots) */
     body::before {
       content: "";
       position: fixed;
@@ -129,7 +129,7 @@
       justify-content: space-between;
       align-items: center;
       font-family: 'Pacifico', cursive;
-      color: var(--fancy-text);
+      color: #000; /* 🔥 now black titles */
       box-shadow: 0 2px 8px rgba(11, 132, 255, 0.2);
       transition: background 0.3s, transform 0.3s;
     }
@@ -232,6 +232,17 @@
       border-radius: 50%;
       object-fit: cover;
     }
+    .popup .close-btn {
+      position: absolute;
+      top: -10px; right: -10px;
+      background: var(--highlight);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 28px; height: 28px;
+      cursor: pointer;
+      font-size: 16px;
+    }
   </style>
 </head>
 <body>
@@ -261,7 +272,7 @@
           <li>60,000 UGX</li>
           <li>400 Zambian Kwacha</li>
         </ul>
-        <p style="text-align:center;font-weight:bold;font-size:18px;">⚠️ STRICTLY NO FREE MATCHES / HALF PAYMENTS</p>
+        <p style="text-align:center;font-weight:bold;font-size:18px;">⚠️ Pay the exact amount to avoid inconveniences<br>STRICTLY NO FREE MATCHES / HALF PAYMENTS</p>
       </div>
     </section>
 
@@ -317,6 +328,7 @@
 
   <!-- Popup -->
   <div class="popup" id="popupPhoto">
+    <button class="close-btn" onclick="closePopup()">×</button>
     <img src="images/profile.png" alt="Profile full view">
   </div>
 
@@ -344,16 +356,12 @@
     const groupPhoto = document.getElementById('groupPhoto');
     const popup = document.getElementById('popupPhoto');
 
-    groupPhoto.addEventListener('click', (e) => {
-      e.stopPropagation();
-      popup.classList.toggle('show');
+    groupPhoto.addEventListener('click', () => {
+      popup.classList.add('show');
     });
-
-    document.addEventListener('click', (e) => {
-      if (popup.classList.contains('show') && !popup.contains(e.target) && e.target !== groupPhoto) {
-        popup.classList.remove('show');
-      }
-    });
+    function closePopup() {
+      popup.classList.remove('show');
+    }
   </script>
 </body>
 </html>
