@@ -25,34 +25,34 @@
       color: #0f1724;
     }
 
-    /* Fixed profile top-left */
+    /* Profile inside header */
     .brand-img {
-      width: 90px;
-      height: 90px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid var(--fancy-text);
       cursor: pointer;
       transition: transform 0.3s;
-      position: fixed;
-      top: 15px;
-      left: 15px;
-      z-index: 1000;
       background: #fff;
     }
     .brand-img:hover { transform: scale(1.05); }
 
-    /* Title in center */
     header {
       text-align: center;
-      margin-top: 40px;
       background: var(--fancy-bg);
-      padding: 80px 20px 20px; /* 🔥 added top padding so title clears profile */
+      padding: 40px 20px 20px;
       border-radius: 12px;
       color: #fff;
       font-family: 'Pacifico', cursive;
       border: 3px solid var(--fancy-text);
       box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+      position: relative;
+    }
+    header .brand-img {
+      position: absolute;
+      top: 15px;
+      left: 15px;
     }
     h1 { margin: 0; font-size: 30px; }
     p.lead {
@@ -162,11 +162,11 @@
       text-align: center;
     }
 
-    /* Popup */
+    /* Popup near profile */
     .popup {
-      position: fixed;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%) scale(0.8);
+      position: absolute;
+      top: 100px; /* below header image */
+      left: 30px;
       background: #fff;
       padding: 10px;
       border-radius: 50%;
@@ -179,12 +179,12 @@
     }
     .popup.show {
       display: block;
-      transform: translate(-50%, -50%) scale(1);
+      transform: scale(1);
       opacity: 1;
     }
     .popup img {
-      width: 180px;
-      height: 180px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
       cursor: pointer;
@@ -193,11 +193,11 @@
 </head>
 <body>
 
-  <!-- Profile top-left -->
-  <img src="images/profile.png" alt="Profile" class="brand-img" id="groupPhoto">
-
   <div class="container">
     <header>
+      <!-- Profile inside header -->
+      <img src="images/profile.png" alt="Profile" class="brand-img" id="groupPhoto">
+
       <h1>COLIN BRIGHT TIPS</h1>
       <p class="lead">Join COLIN BRIGHT TIPS VIP for curated, high-value betting tips and tickets. Pay with your method then send proof to Telegram to get the VIP link.</p>
     </header>
@@ -268,7 +268,7 @@
     </footer>
   </div>
 
-  <!-- Popup -->
+  <!-- Popup near profile -->
   <div class="popup" id="popupPhoto">
     <img src="images/profile.png" alt="Profile full view" id="popupImg">
   </div>
