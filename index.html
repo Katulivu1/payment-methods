@@ -34,7 +34,7 @@
       position: relative;
     }
 
-    /* Background stars (optimized with multiple dots) */
+    /* Background stars */
     body::before {
       content: "";
       position: fixed;
@@ -232,17 +232,6 @@
       border-radius: 50%;
       object-fit: cover;
     }
-    .popup .close-btn {
-      position: absolute;
-      top: -10px; right: -10px;
-      background: var(--highlight);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 28px; height: 28px;
-      cursor: pointer;
-      font-size: 16px;
-    }
   </style>
 </head>
 <body>
@@ -262,7 +251,7 @@
       <div class="card">
         <ul class="charges-grid">
           <li>25 USD / 25 Euros</li>
-          <li>0.0065 BTC</li>
+          <li>0.00021 BTC</li>
           <li>15,000 CFA Francs</li>
           <li>250 Ghana Cedis</li>
           <li>20,000 Naira</li>
@@ -328,7 +317,6 @@
 
   <!-- Popup -->
   <div class="popup" id="popupPhoto">
-    <button class="close-btn" onclick="closePopup()">×</button>
     <img src="images/profile.png" alt="Profile full view">
   </div>
 
@@ -356,12 +344,16 @@
     const groupPhoto = document.getElementById('groupPhoto');
     const popup = document.getElementById('popupPhoto');
 
-    groupPhoto.addEventListener('click', () => {
-      popup.classList.add('show');
+    groupPhoto.addEventListener('click', (e) => {
+      e.stopPropagation();
+      popup.classList.toggle('show');
     });
-    function closePopup() {
-      popup.classList.remove('show');
-    }
+
+    document.addEventListener('click', (e) => {
+      if (popup.classList.contains('show') && !popup.contains(e.target) && e.target !== groupPhoto) {
+        popup.classList.remove('show');
+      }
+    });
   </script>
 </body>
 </html>
