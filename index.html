@@ -1,125 +1,94 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>COLIN BRIGHT TIPS — Subscribe</title>
-  <meta name="description" content="Subscribe to COLIN BRIGHT TIPS VIP channel. Pay via M-Pesa, Airtel Money, Binance Pay and more." />
-
-  <!-- SEO + Social sharing -->
-  <meta property="og:title" content="COLIN BRIGHT TIPS — VIP Access" />
-  <meta property="og:description" content="Join COLIN BRIGHT TIPS VIP for curated, high-value betting tips. Multiple payment methods supported." />
-  <meta property="og:image" content="images/profile.png" />
-  <meta property="og:type" content="website" />
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Pacifico&family=Dancing+Script&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collins Muthuri</title>
   <style>
     :root {
       --accent: #0b84ff;
-      --bg: #000000;
-      --card: #0b1220;
-      --muted: #9aa4b2;
-      --highlight: #ff4444;
-      --fancy-bg: linear-gradient(135deg, #ff6f61, #6b5b95);
-      --fancy-text: #ffcc00;
+      --bg-dark: #0a0a0a;
+      --fancy-text: #FFD700;
     }
-    * { box-sizing: border-box }
     body {
-      font-family: 'Inter', system-ui, Arial, sans-serif;
+      font-family: 'Times New Roman', serif;
       margin: 0;
-      background: var(--bg);
-      color: #0f1724;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    /* Background stars (optimized with multiple dots) */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
-      opacity: 0.3;
-      z-index: -1;
-    }
-
-    .container {
-      max-width: 980px;
-      margin: 36px auto;
-      padding: 20px;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* Header */
-    header {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: center;
-      justify-content: center;
-      background: var(--fancy-bg);
-      padding: 20px;
-      border-radius: 12px;
+      padding: 0;
+      background: var(--bg-dark);
       color: #fff;
-      font-family: 'Pacifico', cursive;
-      border: 3px solid var(--fancy-text);
-      box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+      text-align: center;
     }
-    .brand-img {
-      width: 110px;
-      height: 110px;
+    header {
+      background: linear-gradient(90deg, #0b84ff, #002244);
+      padding: 20px;
+    }
+    header img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid white;
+      cursor: pointer;
+    }
+    header h1 {
+      margin: 10px 0 5px;
+      font-size: 2rem;
+      color: white;
+    }
+    header p {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #ddd;
+    }
+    nav {
+      margin: 15px 0;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .section-title {
+      color: var(--fancy-text);
+      margin: 20px 0;
+    }
+    .projects a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 15px;
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+    }
+    /* Popup */
+    .popup {
+      position: absolute;
+      top: 140px;
+      left: 40px;
+      background: #fff;
+      padding: 10px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      display: none;
+      z-index: 2000;
+      border: 3px solid var(--fancy-text);
+    }
+    .popup img {
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid var(--fancy-text);
-      cursor: pointer;
-      transition: transform 0.3s;
     }
-    .brand-img:hover { transform: scale(1.05); }
-
-    h1 { margin: 0; font-size: 30px; }
-    p.lead {
-      margin: 6px 0;
-      font-size: 18px;
-      font-family: 'Dancing Script', cursive;
-      color: var(--fancy-text);
+    /* Payment Section */
+    .payment-section {
+      margin: 40px auto;
+      max-width: 600px;
+      text-align: left;
     }
-
-    /* Cards */
-    .card {
-      background: linear-gradient(135deg, #ffffff, #f0f0f0);
-      padding: 18px;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(2, 8, 23, .15);
-      border: 2px solid var(--accent);
+    .payment-method {
+      margin: 15px 0;
     }
-
-    .charges-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 12px;
-      list-style: none;
-      padding: 0;
-      margin: 12px 0;
-    }
-    .charges-grid li {
-      background: #eef2f7;
-      padding: 10px;
-      border-radius: 12px;
-      text-align: center;
-      font-family: 'Dancing Script', cursive;
-      color: #000;
-      border: 2px solid var(--accent);
-      transition: transform 0.3s;
-    }
-    .charges-grid li:hover { transform: scale(1.05); }
-
-    /* Payment Accordion */
-    .payments-list { list-style: none; padding: 0; margin: 12px 0 }
-    .payments-list li { margin-bottom: 12px }
-
     .payment-header {
       padding: 12px;
       border: 3px solid var(--accent);
@@ -129,239 +98,150 @@
       justify-content: space-between;
       align-items: center;
       font-family: 'Pacifico', cursive;
-      color: #000; /* 🔥 now black titles */
-      box-shadow: 0 2px 8px rgba(11, 132, 255, 0.2);
-      transition: background 0.3s, transform 0.3s;
+      color: #000; /* black titles */
+      background: #f8f8f8;
+      box-shadow: 0 2px 8px rgba(11,132,255,0.2);
     }
-    .payment-header:hover {
-      transform: scale(1.02);
-      background: rgba(11, 132, 255, 0.1);
-    }
-    .payment-header.open {
-      border-color: var(--fancy-text);
-      background: rgba(255, 204, 0, 0.15);
-    }
-
     .payment-details {
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-height 0.4s ease, opacity 0.4s ease;
-      margin-top: 6px;
-      padding: 0 10px;
-      border-left: 3px solid var(--accent);
-      border-radius: 8px;
+      display: none;
       background: #fff;
-      font-size: 14px;
       color: #000;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 5px;
     }
-    .payment-details.show {
-      max-height: 200px;
-      opacity: 1;
-      padding: 12px;
-    }
-
-    .copy-btn {
-      margin-top: 6px;
-      padding: 6px 10px;
-      font-size: 12px;
+    .payment-details button {
+      background: #d9534f;
+      color: white;
+      padding: 5px 10px;
       border: none;
       border-radius: 6px;
-      background: var(--accent);
-      color: #fff;
       cursor: pointer;
     }
-    .copy-btn:hover { background: var(--highlight); }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 18px;
-      border-radius: 10px;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-      transition: transform 0.3s, background 0.3s;
-    }
-    .btn:hover {
-      transform: scale(1.05);
-      background: var(--highlight);
-    }
-    .btn svg { width: 20px; height: 20px }
-
-    /* Footer */
-    footer {
-      margin-top: 30px;
-      color: #fff;
-      font-size: 14px;
-      background: var(--fancy-bg);
-      padding: 20px;
-      border-radius: 12px;
-      font-family: 'Pacifico', cursive;
-      border: 2px solid var(--fancy-text);
-      text-align: center;
-    }
-
-    /* Popup photo */
-    .popup {
-      position: fixed;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%) scale(0.8);
-      background: #fff;
-      padding: 10px;
-      border-radius: 50%;
-      box-shadow: 0 6px 20px rgba(0,0,0,.4);
-      display: none;
-      z-index: 2000;
-      border: 3px solid var(--fancy-text);
-      transition: transform 0.3s, opacity 0.3s;
-      opacity: 0;
-    }
-    .popup.show {
-      display: block;
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 1;
-    }
-    .popup img {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-    .popup .close-btn {
-      position: absolute;
-      top: -10px; right: -10px;
-      background: var(--highlight);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 28px; height: 28px;
-      cursor: pointer;
-      font-size: 16px;
+    .payment-details button:hover {
+      opacity: 0.9;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div style="position:relative">
-        <img src="images/profile.png" alt="Group photo" class="brand-img" id="groupPhoto">
-      </div>
-      <div>
-        <h1>COLIN BRIGHT TIPS</h1>
-        <p class="lead">Join COLIN BRIGHT TIPS VIP for curated, high-value betting tips and tickets. Choose a currency, pay with your method, then send proof to our Telegram to receive the VIP link.</p>
-      </div>
-    </header>
-
-    <section style="margin-top:22px">
-      <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">Monthly VIP Charges</h2>
-      <div class="card">
-        <ul class="charges-grid">
-          <li>25 USD / 25 Euros</li>
-          <li>0.00021 BTC</li>
-          <li>15,000 CFA Francs</li>
-          <li>250 Ghana Cedis</li>
-          <li>20,000 Naira</li>
-          <li>2,500 KSH</li>
-          <li>6,000 ZWL</li>
-          <li>50,000 TSH</li>
-          <li>60,000 UGX</li>
-          <li>400 Zambian Kwacha</li>
-        </ul>
-        <p style="text-align:center;font-weight:bold;font-size:18px;">⚠️ Pay the exact amount to avoid inconveniences<br>STRICTLY NO FREE MATCHES / HALF PAYMENTS</p>
-      </div>
-    </section>
-
-    <section style="margin-top:26px">
-      <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">Payment Methods</h2>
-      <div class="card">
-        <ul class="payments-list">
-          <li>
-            <div class="payment-header" onclick="toggleDetails('usdt')">USDT (TRC20)<span>▼</span></div>
-            <div class="payment-details" id="usdt"><strong>Address:</strong> TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW<br><button class="copy-btn" onclick="copyText('TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW')">Copy</button></div>
-          </li>
-          <li>
-            <div class="payment-header" onclick="toggleDetails('skrill')">Skrill<span>▼</span></div>
-            <div class="payment-details" id="skrill"><strong>Email:</strong> muthuricollins43@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins43@gmail.com')">Copy</button></div>
-          </li>
-          <li>
-            <div class="payment-header" onclick="toggleDetails('eversend')">Eversend<span>▼</span></div>
-            <div class="payment-details" id="eversend"><a href="https://eversend.me/collm" target="_blank">https://eversend.me/collm</a></div>
-          </li>
-          <li>
-            <div class="payment-header" onclick="toggleDetails('binance')">Binance<span>▼</span></div>
-            <div class="payment-details" id="binance"><strong>ID:</strong> 439629329<br><button class="copy-btn" onclick="copyText('439629329')">Copy</button></div>
-          </li>
-          <li>
-            <div class="payment-header" onclick="toggleDetails('mtn')">MTN Mobile Money (Ghana)<span>▼</span></div>
-            <div class="payment-details" id="mtn">DM on Telegram for guidance.</div>
-          </li>
-          <li>
-            <div class="payment-header" onclick="toggleDetails('bank')">Bank Transfer (Nigeria)<span>▼</span></div>
-            <div class="payment-details" id="bank">DM on Telegram for guidance.</div>
-          </li>
-          <li>
-            <div class="payment-header" onclick="toggleDetails('mpesa')">M-Pesa<span>▼</span></div>
-            <div class="payment-details" id="mpesa"><strong>Name:</strong> ZIPPORAH JOSHUA<br><strong>Number:</strong> +254706415082<br><button class="copy-btn" onclick="copyText('+254706415082')">Copy</button></div>
-          </li>
-          <li>
-            <div class="payment-header" onclick="toggleDetails('airtel')">Airtel Money<span>▼</span></div>
-            <div class="payment-details" id="airtel"><strong>Name:</strong> COLLINS MUTHURI<br><strong>Number:</strong> +254784223005<br><button class="copy-btn" onclick="copyText('+254784223005')">Copy</button></div>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <footer>
-      <p>After payment, send proof on Telegram:</p>
-      <a class="btn" href="https://t.me/on_coole" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M9.2 16.2 8.8 20c.6 0 .8-.3 1.1-.6l2.6-2.5 5.4 3.9c1 .5 1.7.2 2-.9l3.6-16.9c.4-1.7-.6-2.3-1.6-1.9L1.6 9.7c-1.7.7-1.7 1.6-.3 2l5.7 1.8 13.3-8.2c.6-.4 1.2-.2.7.2"/></svg>
-        Send Proof (Telegram)
-      </a>
-      <p style="margin-top:15px;">© 2025 COLIN BRIGHT TIPS. All rights reserved.</p>
-    </footer>
-  </div>
+  <header>
+    <img src="passport.png" id="groupPhoto" alt="Profile Photo">
+    <h1>COLLINS MUTHURI</h1>
+    <p>Civil Engineer and Trainer</p>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#payments">Payments</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
   <!-- Popup -->
   <div class="popup" id="popupPhoto">
-    <button class="close-btn" onclick="closePopup()">×</button>
-    <img src="images/profile.png" alt="Profile full view">
+    <img src="passport.png" alt="Popup Profile">
   </div>
 
+  <section class="projects" id="projects">
+    <h2 class="section-title">Projects</h2>
+    <a href="https://t.me/+qB9x_srqjgc5NzU0" target="_blank">
+      Telegram – Home to the best predictions ever (2+ odds winning daily)
+    </a>
+  </section>
+
+  <section class="payment-section" id="payments">
+    <h2 class="section-title">Payment Methods</h2>
+
+    <!-- M-Pesa -->
+    <div class="payment-method">
+      <div class="payment-header" onclick="toggleDetails('mpesaDetails', this)">M-Pesa <span>▼</span></div>
+      <div class="payment-details" id="mpesaDetails">
+        <p><strong>Name:</strong> ZIPPORAH JOSHUA</p>
+        <p><strong>Number:</strong> +254706415082</p>
+        <button id="mpesaCopy" onclick="copyText('+254706415082','mpesaCopy')">Copy</button>
+      </div>
+    </div>
+
+    <!-- Airtel -->
+    <div class="payment-method">
+      <div class="payment-header" onclick="toggleDetails('airtelDetails', this)">Airtel Money <span>▼</span></div>
+      <div class="payment-details" id="airtelDetails">
+        <p><strong>Name:</strong> COLLINS MUTHURI</p>
+        <p><strong>Number:</strong> +254701234567</p>
+        <button id="airtelCopy" onclick="copyText('+254701234567','airtelCopy')">Copy</button>
+      </div>
+    </div>
+
+    <!-- Skrill -->
+    <div class="payment-method">
+      <div class="payment-header" onclick="toggleDetails('skrillDetails', this)">Skrill <span>▼</span></div>
+      <div class="payment-details" id="skrillDetails">
+        <p><strong>Email:</strong> muthuricollins43@gmail.com</p>
+        <button id="skrillCopy" onclick="copyText('muthuricollins43@gmail.com','skrillCopy')">Copy</button>
+      </div>
+    </div>
+
+    <!-- Binance -->
+    <div class="payment-method">
+      <div class="payment-header" onclick="toggleDetails('binanceDetails', this)">Binance Pay <span>▼</span></div>
+      <div class="payment-details" id="binanceDetails">
+        <p><strong>ID:</strong> 1234567890</p>
+        <button id="binanceCopy" onclick="copyText('1234567890','binanceCopy')">Copy</button>
+      </div>
+    </div>
+
+    <!-- Bitcoin -->
+    <div class="payment-method">
+      <div class="payment-header" onclick="toggleDetails('btcDetails', this)">Bitcoin <span>▼</span></div>
+      <div class="payment-details" id="btcDetails">
+        <p><strong>Address:</strong> bc1qexamplebtcaddress123</p>
+        <p><strong>Amount:</strong> 0.00021 BTC</p>
+        <button id="btcCopy" onclick="copyText('bc1qexamplebtcaddress123','btcCopy')">Copy</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <p>Email: muthuricollins43@gmail.com</p>
+    <p>Phone: +254706415082</p>
+    <p>X (Twitter): <a href="https://x.com/futbol_afc" target="_blank">@futbol_afc</a></p>
+  </section>
+
   <script>
-    function toggleDetails(id) {
+    // Toggle dropdown
+    function toggleDetails(id, header){
       const elem = document.getElementById(id);
-      const header = elem.previousElementSibling;
-
-      const isOpen = elem.classList.contains('show');
-      document.querySelectorAll('.payment-details').forEach(d => d.classList.remove('show'));
-      document.querySelectorAll('.payment-header').forEach(h => h.classList.remove('open'));
-
-      if (!isOpen) {
-        elem.classList.add('show');
-        header.classList.add('open');
-      }
+      elem.style.display = (elem.style.display === 'block') ? 'none' : 'block';
     }
 
-    function copyText(text) {
+    // Copy function with button feedback
+    function copyText(text, id){
       navigator.clipboard.writeText(text).then(() => {
-        alert("Copied: " + text);
+        let btn = document.getElementById(id);
+        let original = btn.textContent;
+        btn.textContent = "Copied!";
+        btn.style.background = "green";
+
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.style.background = "#d9534f";
+        }, 2000);
       });
     }
 
+    // Profile popup toggle
     const groupPhoto = document.getElementById('groupPhoto');
-    const popup = document.getElementById('popupPhoto');
+    const popupPhoto = document.getElementById('popupPhoto');
 
-    groupPhoto.addEventListener('click', () => {
-      popup.classList.add('show');
+    groupPhoto.addEventListener('click', function(e) {
+      e.stopPropagation();
+      popupPhoto.style.display = (popupPhoto.style.display === 'block') ? 'none' : 'block';
     });
-    function closePopup() {
-      popup.classList.remove('show');
-    }
+
+    document.addEventListener('click', function(e) {
+      if (!popupPhoto.contains(e.target) && e.target !== groupPhoto) {
+        popupPhoto.style.display = 'none';
+      }
+    });
   </script>
 </body>
 </html>
