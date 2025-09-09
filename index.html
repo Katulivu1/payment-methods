@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>COLIN BRIGHT TIPS — Subscribe</title>
   <meta name="description" content="Subscribe to COLIN BRIGHT TIPS VIP channel. Pay via M-Pesa, Airtel Money, Binance Pay and more." />
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Pacifico&family=Dancing+Script&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --accent: #0b84ff;
@@ -24,14 +22,11 @@
       background: var(--bg);
       color: #0f1724;
     }
-
-    /* Center container */
     .container {
-      max-width: 900px;   /* keeps desktop width in check */
-      margin: 0 auto;     /* centers the content */
-      padding: 0 15px;    /* small breathing space on sides */
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 15px;
     }
-
     /* Profile inside header */
     .brand-img {
       width: 70px;
@@ -43,12 +38,13 @@
       transition: transform 0.3s;
       background: #fff;
     }
-    .brand-img:hover { transform: scale(1.05); }
-
+    .brand-img:hover {
+      transform: scale(1.05);
+    }
     header {
       text-align: center;
       background: var(--fancy-bg);
-      padding: 40px 20px 20px;
+      padding: 60px 20px 20px; /* increased top padding so title doesn’t collide */
       border-radius: 12px;
       color: #fff;
       font-family: 'Pacifico', cursive;
@@ -61,14 +57,17 @@
       top: 15px;
       left: 15px;
     }
-    h1 { margin: 0; font-size: 30px; }
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      margin-left: 40px; /* Move title slightly to the right */
+    }
     p.lead {
       margin: 6px 0;
       font-size: 18px;
       font-family: 'Dancing Script', cursive;
       color: var(--fancy-text);
     }
-
     .card {
       background: #fff;
       padding: 18px;
@@ -76,7 +75,6 @@
       box-shadow: 0 6px 18px rgba(2, 8, 23, .15);
       border: 2px solid var(--accent);
     }
-
     .charges-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -94,10 +92,14 @@
       color: #000;
       border: 2px solid var(--accent);
     }
-
-    .payments-list { list-style: none; padding: 0; margin: 12px 0 }
-    .payments-list li { margin-bottom: 12px }
-
+    .payments-list {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0
+    }
+    .payments-list li {
+      margin-bottom: 12px
+    }
     .payment-header {
       padding: 12px;
       border: 3px solid var(--accent);
@@ -114,7 +116,6 @@
       border-color: var(--fancy-text);
       background: rgba(255, 204, 0, 0.15);
     }
-
     .payment-details {
       max-height: 0;
       overflow: hidden;
@@ -133,7 +134,6 @@
       opacity: 1;
       padding: 12px;
     }
-
     .copy-btn {
       margin-top: 6px;
       padding: 6px 10px;
@@ -144,7 +144,6 @@
       color: #fff;
       cursor: pointer;
     }
-
     .btn {
       display: inline-flex;
       align-items: center;
@@ -156,7 +155,6 @@
       text-decoration: none;
       font-weight: bold;
     }
-
     footer {
       margin-top: 30px;
       color: #fff;
@@ -168,11 +166,10 @@
       border: 2px solid var(--fancy-text);
       text-align: center;
     }
-
     /* Popup near profile */
     .popup {
       position: absolute;
-      top: 100px; /* below header image */
+      top: 100px;
       left: 30px;
       background: #fff;
       padding: 10px;
@@ -199,16 +196,13 @@
   </style>
 </head>
 <body>
-
   <div class="container">
     <header>
       <!-- Profile inside header -->
       <img src="images/profile.png" alt="Profile" class="brand-img" id="groupPhoto">
-
       <h1>COLIN BRIGHT TIPS</h1>
       <p class="lead">Join COLIN BRIGHT TIPS VIP for curated, high-value betting tips and tickets. Pay with your method then send proof to Telegram to get the VIP link.</p>
     </header>
-
     <section style="margin-top:22px">
       <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">Monthly VIP Charges</h2>
       <div class="card">
@@ -227,18 +221,17 @@
         <p style="text-align:center;font-weight:bold;font-size:18px;">⚠️ Pay the exact amount to avoid inconveniences<br>STRICTLY NO FREE MATCHES / HALF PAYMENTS</p>
       </div>
     </section>
-
     <section style="margin-top:26px">
       <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">Payment Methods</h2>
       <div class="card">
         <ul class="payments-list">
           <li>
             <div class="payment-header" onclick="toggleDetails('usdt')">USDT (TRC20)<span>▼</span></div>
-            <div class="payment-details" id="usdt"><strong>Address:</strong> TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW<br><button class="copy-btn" onclick="copyText('TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW')">Copy</button></div>
+            <div class="payment-details" id="usdt"><strong>Address:</strong> TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW<br><button class="copy-btn" onclick="copyText('TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW','usdt')">Copy</button></div>
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('skrill')">Skrill<span>▼</span></div>
-            <div class="payment-details" id="skrill"><strong>Email:</strong> muthuricollins43@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins43@gmail.com')">Copy</button></div>
+            <div class="payment-details" id="skrill"><strong>Email:</strong> muthuricollins43@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins43@gmail.com','skrill')">Copy</button></div>
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('eversend')">Eversend<span>▼</span></div>
@@ -246,7 +239,7 @@
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('binance')">Binance<span>▼</span></div>
-            <div class="payment-details" id="binance"><strong>ID:</strong> 439629329<br><button class="copy-btn" onclick="copyText('439629329')">Copy</button></div>
+            <div class="payment-details" id="binance"><strong>ID:</strong> 439629329<br><button class="copy-btn" onclick="copyText('439629329','binance')">Copy</button></div>
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('mtn')">MTN Mobile Money (Ghana)<span>▼</span></div>
@@ -258,28 +251,25 @@
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('mpesa')">M-Pesa<span>▼</span></div>
-            <div class="payment-details" id="mpesa"><strong>Name:</strong> ZIPPORAH JOSHUA<br><strong>Number:</strong> +254706415082<br><button class="copy-btn" onclick="copyText('+254706415082')">Copy</button></div>
+            <div class="payment-details" id="mpesa"><strong>Name:</strong> ZIPPORAH JOSHUA<br><strong>Number:</strong> +254706415082<br><button class="copy-btn" onclick="copyText('+254706415082','mpesa')">Copy</button></div>
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('airtel')">Airtel Money<span>▼</span></div>
-            <div class="payment-details" id="airtel"><strong>Name:</strong> COLLINS MUTHURI<br><strong>Number:</strong> +254784223005<br><button class="copy-btn" onclick="copyText('+254784223005')">Copy</button></div>
+            <div class="payment-details" id="airtel"><strong>Name:</strong> COLLINS MUTHURI<br><strong>Number:</strong> +254784223005<br><button class="copy-btn" onclick="copyText('+254784223005','airtel')">Copy</button></div>
           </li>
         </ul>
       </div>
     </section>
-
     <footer>
       <p>After payment, send proof on Telegram:</p>
       <a class="btn" href="https://t.me/on_coole" target="_blank">Send Proof (Telegram)</a>
       <p style="margin-top:15px;">© 2025 COLIN BRIGHT TIPS. All rights reserved.</p>
     </footer>
   </div>
-
   <!-- Popup near profile -->
   <div class="popup" id="popupPhoto">
     <img src="images/profile.png" alt="Profile full view" id="popupImg">
   </div>
-
   <script>
     function toggleDetails(id) {
       const elem = document.getElementById(id);
@@ -292,16 +282,16 @@
         header.classList.add('open');
       }
     }
-
-    function copyText(text) {
+    function copyText(text, id) {
       navigator.clipboard.writeText(text).then(() => {
         alert("Copied successfully!");
+        // auto minimize the dropdown after copy
+        document.getElementById(id).classList.remove('show');
+        document.querySelectorAll('.payment-header').forEach(h => h.classList.remove('open'));
       });
     }
-
     const groupPhoto = document.getElementById('groupPhoto');
     const popup = document.getElementById('popupPhoto');
-
     groupPhoto.addEventListener('click', () => {
       popup.classList.add('show');
     });
