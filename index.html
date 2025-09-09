@@ -180,21 +180,29 @@
     .payments-list li { margin-bottom: 10px }
     .payment-header {
       background: transparent; /* Hollow: no background fill */
-      padding: 10px;
-      border: 2px dashed var(--accent); /* Hollow: dashed border for tab-like outline */
-      border-radius: 12px;
+      padding: 12px; /* Slightly more padding for appeal */
+      border: 3px solid var(--accent); /* Bolder solid border for bold and appealing boundaries */
+      border-radius: 20px; /* Increased curve for appealing rounded design */
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-family: 'Pacifico', cursive;
-      color: var(--fancy-text);
-      box-shadow: none; /* Remove shadow for hollow look */
-      transition: transform 0.3s, border-style 0.3s;
+      color: var(--fancy-text); /* Yellow text for visibility */
+      box-shadow: 0 2px 8px rgba(11, 132, 255, 0.2); /* Subtle glow shadow for appeal */
+      transition: transform 0.3s, border-color 0.3s, background 0.3s, box-shadow 0.3s;
+      font-weight: bold; /* Bolder text for headers */
     }
     .payment-header:hover {
       transform: scale(1.02);
-      border-style: solid; /* Solid on hover for interaction */
+      border-color: var(--fancy-text); /* Change to yellow on hover for appeal */
+      background: rgba(11, 132, 255, 0.1); /* Subtle bg on hover for appeal */
+      box-shadow: 0 4px 12px rgba(11, 132, 255, 0.3);
+    }
+    .payment-header.open {
+      border-color: var(--fancy-text); /* Yellow border when open */
+      background: rgba(255, 204, 0, 0.1); /* Subtle yellow bg when open */
+      box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3);
     }
     .payment-header span {
       transition: transform 0.3s;
@@ -204,24 +212,29 @@
     }
     .payment-details {
       display: none;
-      background: rgba(255, 255, 255, 0.1); /* Hollow: semi-transparent white for glassmorphism effect */
-      padding: 10px;
-      border: 2px dashed var(--accent); /* Hollow: dashed border */
-      border-radius: 12px;
-      margin-top: 5px;
+      background: rgba(255, 255, 255, 0.95); /* Slightly more opaque for better visibility */
+      padding: 12px;
+      border: 3px solid var(--accent); /* Bolder border for details tab */
+      border-radius: 20px; /* Matching curve */
+      margin-top: 8px;
       font-size: 14px;
       font-family: 'Inter', sans-serif;
-      color: #ffffff; /* White text for visibility on semi-transparent bg */
-      box-shadow: none; /* Remove shadow for hollow look */
-      backdrop-filter: blur(10px); /* Glassmorphism blur effect */
+      color: #000000; /* Black base text */
+      box-shadow: 0 4px 12px rgba(11, 132, 255, 0.2); /* Bolder shadow for appeal */
+      backdrop-filter: blur(5px); /* Light blur for modern feel */
       opacity: 0;
       transform: translateY(-10px);
       transition: opacity 0.3s ease, transform 0.3s ease;
+      font-weight: 500; /* Semi-bold for overall text */
     }
     .payment-details.show {
       display: block;
       opacity: 1;
       transform: translateY(0);
+    }
+    .payment-details strong {
+      color: var(--accent); /* Blue color for labels like "Address:", "Email:", etc. */
+      font-weight: bold; /* Bolder for labels */
     }
     /* Style for section headings to make them visible */
     section h2 {
@@ -308,19 +321,19 @@
         <ul class="payments-list">
           <li>
             <div class="payment-header" onclick="toggleDetails('usdt')">USDT (TRC20)<span>▼</span></div>
-            <div class="payment-details" id="usdt">Address: TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW<br><button class="copy-btn" onclick="copyText('TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW', 'usdt')">Copy</button></div>
+            <div class="payment-details" id="usdt"><strong>Address:</strong> TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW<br><button class="copy-btn" onclick="copyText('TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW', 'usdt')">Copy</button></div>
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('skrill')">Skrill<span>▼</span></div>
-            <div class="payment-details" id="skrill">Email: muthuricollins43@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins43@gmail.com', 'skrill')">Copy</button></div>
+            <div class="payment-details" id="skrill"><strong>Email:</strong> muthuricollins43@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins43@gmail.com', 'skrill')">Copy</button></div>
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('eversend')">Eversend<span>▼</span></div>
-            <div class="payment-details" id="eversend">Link: <a href="https://eversend.me/collm" target="_blank">https://eversend.me/collm</a></div>
+            <div class="payment-details" id="eversend"><strong>Link:</strong> <a href="https://eversend.me/collm" target="_blank">https://eversend.me/collm</a></div>
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('binance')">Binance<span>▼</span></div>
-            <div class="payment-details" id="binance">ID: 439629329<br><button class="copy-btn" onclick="copyText('439629329', 'binance')">Copy</button></div>
+            <div class="payment-details" id="binance"><strong>ID:</strong> 439629329<br><button class="copy-btn" onclick="copyText('439629329', 'binance')">Copy</button></div>
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('mtn')">MTN Mobile Money (Ghana)<span>▼</span></div>
@@ -332,11 +345,11 @@
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('mpesa')">M-Pesa<span>▼</span></div>
-            <div class="payment-details" id="mpesa">Name: ZIPPORAH JOSHUA<br>Number: +254706415082<br><button class="copy-btn" onclick="copyText('+254706415082', 'mpesa')">Copy</button></div>
+            <div class="payment-details" id="mpesa"><strong>Name:</strong> ZIPPORAH JOSHUA<br><strong>Number:</strong> +254706415082<br><button class="copy-btn" onclick="copyText('+254706415082', 'mpesa')">Copy</button></div>
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('airtel')">Airtel Money<span>▼</span></div>
-            <div class="payment-details" id="airtel">Name: COLLINS MUTHURI<br>Number: +254784223005<br><button class="copy-btn" onclick="copyText('+254784223005', 'airtel')">Copy</button></div>
+            <div class="payment-details" id="airtel"><strong>Name:</strong> COLLINS MUTHURI<br><strong>Number:</strong> +254784223005<br><button class="copy-btn" onclick="copyText('+254784223005', 'airtel')">Copy</button></div>
           </li>
         </ul>
       </div>
@@ -363,7 +376,7 @@
     }
 
     function toggleDetails(id){
-      // Close all payment details first
+      // Close all payment details first (accordion behavior)
       const allDetails = document.querySelectorAll('.payment-details');
       allDetails.forEach(detail => {
         detail.classList.remove('show');
@@ -371,15 +384,16 @@
         if (header) header.classList.remove('open');
       });
 
-      // Toggle the clicked one
+      // Toggle the clicked one (closes if already open, opens if closed)
       const elem = document.getElementById(id);
       const header = elem.previousElementSibling;
-      if (elem.style.display === 'block' || elem.classList.contains('show')) {
-        // If already open, just close it
+      const isCurrentlyOpen = elem.classList.contains('show');
+      if (isCurrentlyOpen) {
+        // Close it
         elem.classList.remove('show');
         if (header) header.classList.remove('open');
       } else {
-        // Open this one
+        // Open it
         elem.classList.add('show');
         if (header) header.classList.add('open');
       }
