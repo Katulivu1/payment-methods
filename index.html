@@ -190,18 +190,46 @@
       color: var(--fancy-text);
       border: 2px solid var(--accent);
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+    .payment-header:hover {
+      transform: scale(1.02);
+    }
+    .payment-header span {
+      transition: transform 0.3s;
+    }
+    .payment-header.open span {
+      transform: rotate(180deg);
     }
     .payment-details {
       display: none;
       background: #fff;
       padding: 10px;
-      border: 2px solid var(--accent);
+      border: 2px solid var(--fancy-text); /* Brighter border to make it pop */
       border-radius: 12px;
       margin-top: 5px;
       font-size: 14px;
       font-family: 'Inter', sans-serif;
       color: #000000; /* Black text for payment details */
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .payment-details.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Style for section headings to make them visible */
+    section h2 {
+      margin: 0 0 8px;
+      color: var(--fancy-text); /* Visible yellow on dark background */
+      font-family: 'Pacifico', cursive;
+      font-size: 24px;
+      padding: 10px;
+      text-align: center;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Subtle shadow for better visibility */
     }
     .copy-btn {
       margin-top: 5px;
@@ -253,7 +281,7 @@
     </header>
 
     <section style="margin-top:22px">
-      <h2 style="margin:0 0 8px">Monthly VIP Charges</h2>
+      <h2>Monthly VIP Charges</h2>
       <div class="card">
         <ul class="charges-grid">
           <li>25 USD / 25 Euros</li>
@@ -273,7 +301,7 @@
     </section>
 
     <section style="margin-top:26px">
-      <h2 style="margin:0 0 8px">Payment Methods</h2>
+      <h2>Payment Methods</h2>
       <div class="card">
         <ul class="payments-list">
           <li>
@@ -333,8 +361,26 @@
     }
 
     function toggleDetails(id){
+      // Close all payment details first
+      const allDetails = document.querySelectorAll('.payment-details');
+      allDetails.forEach(detail => {
+        detail.classList.remove('show');
+        const header = detail.previousElementSibling;
+        if (header) header.classList.remove('open');
+      });
+
+      // Toggle the clicked one
       const elem = document.getElementById(id);
-      elem.style.display = elem.style.display === 'block' ? 'none' : 'block';
+      const header = elem.previousElementSibling;
+      if (elem.style.display === 'block' || elem.classList.contains('show')) {
+        // If already open, just close it
+        elem.classList.remove('show');
+        if (header) header.classList.remove('open');
+      } else {
+        // Open this one
+        elem.classList.add('show');
+        if (header) header.classList.add('open');
+      }
     }
 
     function copyText(text, id) {
@@ -342,7 +388,11 @@
         alert("Copied: " + text);
         // Collapse the payment details immediately after copying
         const elem = document.getElementById(id);
-        if (elem) elem.style.display = 'none';
+        if (elem) {
+          elem.classList.remove('show');
+          const header = elem.previousElementSibling;
+          if (header) header.classList.remove('open');
+        }
       });
     }
 
