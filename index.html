@@ -27,7 +27,6 @@
       margin: 0 auto;
       padding: 0 15px;
     }
-    /* Profile inside header */
     .brand-img {
       width: 70px;
       height: 70px;
@@ -44,7 +43,7 @@
     header {
       text-align: center;
       background: var(--fancy-bg);
-      padding: 60px 20px 20px; /* increased top padding so title doesn’t collide */
+      padding: 60px 20px 20px;
       border-radius: 12px;
       color: #fff;
       font-family: 'Pacifico', cursive;
@@ -60,7 +59,7 @@
     h1 {
       margin: 0;
       font-size: 30px;
-      margin-left: 40px; /* Move title slightly to the right */
+      margin-left: 40px;
     }
     p.lead {
       margin: 6px 0;
@@ -91,6 +90,11 @@
       font-family: 'Dancing Script', cursive;
       color: #000;
       border: 2px solid var(--accent);
+    }
+    .payments-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
     }
     .payments-list {
       list-style: none;
@@ -166,7 +170,6 @@
       border: 2px solid var(--fancy-text);
       text-align: center;
     }
-    /* Popup near profile */
     .popup {
       position: absolute;
       top: 100px;
@@ -198,9 +201,7 @@
 <body>
   <div class="container">
     <header>
-      <!-- Profile inside header -->
       <img src="images/profile.png" alt="Profile" class="brand-img" id="groupPhoto">
-      <!-- Popup near profile -->
       <div class="popup" id="popupPhoto">
         <img src="images/profile.png" alt="Profile full view" id="popupImg">
       </div>
@@ -228,56 +229,24 @@
     <section style="margin-top:26px">
       <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">Payment Methods</h2>
       <div class="card">
-        <ul class="payments-list">
-          <li>
-            <div class="payment-header" onclick="toggleDetails('usdt')">USDT (TRC20)<span>▼</span></div>
-            <div class="payment-details" id="usdt"><strong>Address:</strong> TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW<br><button class="copy-btn" onclick="copyText('TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW','usdt')">Copy</button></div>
-          </li>
-          <li>
-            <div class="payment-header" onclick="toggleDetails('skrill')">Skrill<span>▼</span></div>
-            <div class="payment-details" id="skrill"><strong>Email:</strong> muthuricollins43@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins43@gmail.com','skrill')">Copy</button></div>
-          </li>
-          <li>
-            <div class="payment-header" onclick="toggleDetails('eversend')">Eversend<span>▼</span></div>
-            <div class="payment-details" id="eversend"><a href="https://eversend.me/collm" target="_blank">https://eversend.me/collm</a></div>
-          </li>
-          <li>
-            <div class="payment-header" onclick="toggleDetails('binance')">Binance<span>▼</span></div>
-            <div class="payment-details" id="binance"><strong>ID:</strong> 439629329<br><button class="copy-btn" onclick="copyText('439629329','binance')">Copy</button></div>
-          </li>
-          <li>
-            <div class="payment-header" onclick="toggleDetails('mtn')">MTN Mobile Money (Ghana)<span>▼</span></div>
-            <div class="payment-details" id="mtn">DM on Telegram for guidance.</div>
-          </li>
-          <li>
-            <div class="payment-header" onclick="toggleDetails('bank')">Bank Transfer (Nigeria)<span>▼</span></div>
-            <div class="payment-details" id="bank">DM on Telegram for guidance.</div>
-          </li>
-          <li>
-            <div class="payment-header" onclick="toggleDetails('mpesa')">M-Pesa<span>▼</span></div>
-            <div class="payment-details" id="mpesa"><strong>Name:</strong> ZIPPORAH JOSHUA<br><strong>Number:</strong> +254706415082<br><button class="copy-btn" onclick="copyText('+254706415082','mpesa')">Copy</button></div>
-          </li>
-          <li>
-            <div class="payment-header" onclick="toggleDetails('airtel')">Airtel Money<span>▼</span></div>
-            <div class="payment-details" id="airtel"><strong>Name:</strong> COLLINS MUTHURI<br><strong>Number:</strong> +254784223005<br><button class="copy-btn" onclick="copyText('+254784223005','airtel')">Copy</button></div>
-          </li>
-          <li>
-            <div class="payment-header" onclick="toggleDetails('minipay')">MiniPay<span>▼</span></div>
-            <div class="payment-details" id="minipay"><strong>Number:</strong> +254114687523<br><button class="copy-btn" onclick="copyText('+254114687523','minipay')">Copy</button></div>
-          </li>
-          <li>
-            <div class="payment-header" onclick="toggleDetails('yellowcard')">Yellow Card<span>▼</span></div>
-            <div class="payment-details" id="yellowcard"><strong>Email:</strong> muthuricollins771@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins771@gmail.com','yellowcard')">Copy</button></div>
-          </li>
-          <li>
-            <div class="payment-header" onclick="toggleDetails('paypal')">Paypal<span>▼</span></div>
-            <div class="payment-details" id="paypal"><strong>Email:</strong> kinyaoneis@gmail.com<br><button class="copy-btn" onclick="copyText('kinyaoneis@gmail.com','paypal')">Copy</button></div>
-          </li>
-          <li>
-            <div class="payment-header" onclick="toggleDetails('bybitpay')">Bybit Pay<span>▼</span></div>
-            <div class="payment-details" id="bybitpay"><strong>UID:</strong> 177383003<br><button class="copy-btn" onclick="copyText('177383003','bybitpay')">Copy</button></div>
-          </li>
-        </ul>
+        <div class="payments-columns">
+          <ul class="payments-list">
+            <li><div class="payment-header" onclick="toggleDetails('usdt')">USDT (TRC20)<span>▼</span></div><div class="payment-details" id="usdt"><strong>Address:</strong> TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW<br><button class="copy-btn" onclick="copyText('TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW','usdt')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('skrill')">Skrill<span>▼</span></div><div class="payment-details" id="skrill"><strong>Email:</strong> muthuricollins43@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins43@gmail.com','skrill')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('eversend')">Eversend<span>▼</span></div><div class="payment-details" id="eversend"><a href="https://eversend.me/collm" target="_blank">https://eversend.me/collm</a></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('binance')">Binance<span>▼</span></div><div class="payment-details" id="binance"><strong>ID:</strong> 439629329<br><button class="copy-btn" onclick="copyText('439629329','binance')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('mtn')">MTN Mobile Money (Ghana)<span>▼</span></div><div class="payment-details" id="mtn">DM on Telegram for guidance.</div></li>
+            <li><div class="payment-header" onclick="toggleDetails('bank')">Bank Transfer (Nigeria)<span>▼</span></div><div class="payment-details" id="bank">DM on Telegram for guidance.</div></li>
+          </ul>
+          <ul class="payments-list">
+            <li><div class="payment-header" onclick="toggleDetails('mpesa')">M-Pesa<span>▼</span></div><div class="payment-details" id="mpesa"><strong>Name:</strong> ZIPPORAH JOSHUA<br><strong>Number:</strong> +254706415082<br><button class="copy-btn" onclick="copyText('+254706415082','mpesa')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('airtel')">Airtel Money<span>▼</span></div><div class="payment-details" id="airtel"><strong>Name:</strong> COLLINS MUTHURI<br><strong>Number:</strong> +254784223005<br><button class="copy-btn" onclick="copyText('+254784223005','airtel')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('minipay')">MiniPay<span>▼</span></div><div class="payment-details" id="minipay"><strong>Number:</strong> +254114687523<br><button class="copy-btn" onclick="copyText('+254114687523','minipay')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('yellowcard')">Yellow Card<span>▼</span></div><div class="payment-details" id="yellowcard"><strong>Email:</strong> muthuricollins771@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins771@gmail.com','yellowcard')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('paypal')">Paypal<span>▼</span></div><div class="payment-details" id="paypal"><strong>Email:</strong> kinyaoneis@gmail.com<br><button class="copy-btn" onclick="copyText('kinyaoneis@gmail.com','paypal')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('bybitpay')">Bybit Pay<span>▼</span></div><div class="payment-details" id="bybitpay"><strong>UID:</strong> 177383003<br><button class="copy-btn" onclick="copyText('177383003','bybitpay')">Copy</button></div></li>
+          </ul>
+        </div>
       </div>
     </section>
     <footer>
@@ -301,7 +270,6 @@
     function copyText(text, id) {
       navigator.clipboard.writeText(text).then(() => {
         alert("Copied successfully!");
-        // auto minimize the dropdown after copy
         document.getElementById(id).classList.remove('show');
         document.querySelectorAll('.payment-header').forEach(h => h.classList.remove('open'));
       });
