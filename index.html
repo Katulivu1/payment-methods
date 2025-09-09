@@ -5,12 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>COLIN BRIGHT TIPS — Subscribe</title>
   <meta name="description" content="Subscribe to COLIN BRIGHT TIPS VIP channel. Pay via M-Pesa, Airtel Money, Binance Pay and more." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Pacifico&family=Dancing+Script&family=Times+New+Roman&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Pacifico&family=Dancing+Script&display=swap" rel="stylesheet">
   <style>
     :root {
       --accent: #0b84ff;
       --bg: #000000;
-      --card: #0b1220;
       --muted: #9aa4b2;
       --highlight: #ff4444;
       --fancy-bg: linear-gradient(135deg, #ff6f61, #6b5b95);
@@ -22,123 +21,63 @@
       margin: 0;
       background: var(--bg);
       color: #0f1724;
-      overflow-x: hidden;
-      position: relative;
-    }
-    /* Star Animation Background */
-    body::before,
-    body::after {
-      content: '';
-      position: fixed;
-      width: 2px;
-      height: 2px;
-      background: #fff;
-      border-radius: 50%;
-      animation: twinkle 5s infinite;
-      z-index: -1;
-    }
-    body::before {
-      top: 10%;
-      left: 20%;
-      animation-delay: 0s;
-    }
-    body::after {
-      top: 70%;
-      left: 80%;
-      animation-delay: 2s;
-    }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 1; transform: scale(1.5); }
-    }
-    /* Additional Stars */
-    body {
-      background: var(--bg);
-    }
-    body::after {
-      content: '';
-      position: fixed;
-      top: 30%;
-      left: 50%;
-      width: 3px;
-      height: 3px;
-      background: #fff;
-      border-radius: 50%;
-      animation: twinkle 7s infinite;
-      animation-delay: 1s;
-    }
-    body::before {
-      content: '';
-      position: fixed;
-      top: 50%;
-      left: 30%;
-      width: 1px;
-      height: 1px;
-      background: #fff;
-      border-radius: 50%;
-      animation: twinkle 4s infinite;
-      animation-delay: 3s;
     }
     .container {
-      max-width: 980px;
-      margin: 36px auto;
-      padding: 20px;
-      position: relative;
-      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 15px;
     }
-    header {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      background: var(--fancy-bg);
-      padding: 20px;
-      border-radius: 12px;
-      color: #e6eef6;
-      font-family: 'Pacifico', cursive;
-      font-size: 22px;
-      border: 3px solid var(--fancy-text);
-      box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
-    }
+    /* Profile inside header */
     .brand-img {
-      width: 120px;
-      height: 120px;
-      flex: 0 0 120px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
       object-fit: cover;
-      cursor: pointer;
       border: 3px solid var(--fancy-text);
+      cursor: pointer;
+      transition: transform 0.3s;
+      background: #fff;
     }
-    h1 { margin: 0; font-size: 28px }
+    .brand-img:hover {
+      transform: scale(1.05);
+    }
+    header {
+      text-align: center;
+      background: var(--fancy-bg);
+      padding: 60px 20px 20px; /* increased top padding so title doesn’t collide */
+      border-radius: 12px;
+      color: #fff;
+      font-family: 'Pacifico', cursive;
+      border: 3px solid var(--fancy-text);
+      box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+      position: relative;
+    }
+    header .brand-img {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      margin-left: 40px; /* Move title slightly to the right */
+    }
     p.lead {
       margin: 6px 0;
-      color: var(--muted);
+      font-size: 18px;
       font-family: 'Dancing Script', cursive;
-      font-size: 16px;
       color: var(--fancy-text);
     }
     .card {
-      background: #f8f9fb;
-      padding: 16px;
+      background: #fff;
+      padding: 18px;
       border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(2, 8, 23, .1);
+      box-shadow: 0 6px 18px rgba(2, 8, 23, .15);
       border: 2px solid var(--accent);
-      background: linear-gradient(135deg, #ffffff, #f0f0f0);
-    }
-    .muted { color: var(--muted); font-size: 13px }
-    footer {
-      margin-top: 30px;
-      color: #e6eef6;
-      font-size: 14px;
-      background: var(--fancy-bg);
-      padding: 20px;
-      border-radius: 12px;
-      font-family: 'Pacifico', cursive;
-      border: 2px solid var(--fancy-text);
-      box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
     }
     .charges-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 12px;
       list-style: none;
       padding: 0;
@@ -150,111 +89,53 @@
       border-radius: 12px;
       text-align: center;
       font-family: 'Dancing Script', cursive;
-      color: #000000; /* Black text for charges */
+      color: #000;
       border: 2px solid var(--accent);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
     }
-    .charges-grid li:hover {
-      transform: scale(1.05);
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 10px 14px;
-      border-radius: 9px;
-      background: var(--accent);
-      color: #04202f;
-      text-decoration: none;
-      font-weight: 700;
-      transition: transform 0.3s;
-    }
-    .btn:hover {
-      transform: scale(1.05);
-      background: var(--highlight);
-      color: #fff;
-    }
-    .btn svg { width: 18px; height: 18px }
     .payments-list {
       list-style: none;
       padding: 0;
-      margin: 12px 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr; /* Two columns */
-      gap: 10px; /* Space between columns */
+      margin: 12px 0
     }
-    .payments-list li { margin-bottom: 10px }
+    .payments-list li {
+      margin-bottom: 12px
+    }
     .payment-header {
-      background: transparent; /* Hollow: no background fill */
-      padding: 12px; /* Slightly more padding for appeal */
-      border: 3px solid var(--accent); /* Bolder solid border for bold and appealing boundaries */
-      border-radius: 20px; /* Increased curve for appealing rounded design */
+      padding: 12px;
+      border: 3px solid var(--accent);
+      border-radius: 18px;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-family: 'Pacifico', cursive;
-      color: var(--fancy-text); /* Yellow text for visibility */
-      box-shadow: 0 2px 8px rgba(11, 132, 255, 0.2); /* Subtle glow shadow for appeal */
-      transition: transform 0.3s, border-color 0.3s, background 0.3s, box-shadow 0.3s;
-      font-weight: bold; /* Bolder text for headers */
-    }
-    .payment-header:hover {
-      transform: scale(1.02);
-      border-color: var(--fancy-text); /* Change to yellow on hover for appeal */
-      background: rgba(11, 132, 255, 0.1); /* Subtle bg on hover for appeal */
-      box-shadow: 0 4px 12px rgba(11, 132, 255, 0.3);
+      color: #000;
+      transition: background 0.3s;
     }
     .payment-header.open {
-      border-color: var(--fancy-text); /* Yellow border when open */
-      background: rgba(255, 204, 0, 0.1); /* Subtle yellow bg when open */
-      box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3);
-    }
-    .payment-header span {
-      transition: transform 0.3s;
-    }
-    .payment-header.open span {
-      transform: rotate(180deg);
+      border-color: var(--fancy-text);
+      background: rgba(255, 204, 0, 0.15);
     }
     .payment-details {
-      display: none;
-      background: rgba(255, 255, 255, 0.95); /* Slightly more opaque for better visibility */
-      padding: 12px;
-      border: 3px solid var(--accent); /* Bolder border for details tab */
-      border-radius: 20px; /* Matching curve */
-      margin-top: 8px;
-      font-size: 14px;
-      font-family: 'Inter', sans-serif;
-      color: #000000; /* Black base text */
-      box-shadow: 0 4px 12px rgba(11, 132, 255, 0.2); /* Bolder shadow for appeal */
-      backdrop-filter: blur(5px); /* Light blur for modern feel */
+      max-height: 0;
+      overflow: hidden;
       opacity: 0;
-      transform: translateY(-10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      font-weight: 500; /* Semi-bold for overall text */
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+      margin-top: 6px;
+      padding: 0 10px;
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      background: #fff;
+      font-size: 14px;
+      color: #000;
     }
     .payment-details.show {
-      display: block;
+      max-height: 200px;
       opacity: 1;
-      transform: translateY(0);
-    }
-    .payment-details strong {
-      color: var(--accent); /* Blue color for labels like "Address:", "Email:", etc. */
-      font-weight: bold; /* Bolder for labels */
-    }
-    /* Style for section headings to make them visible */
-    section h2 {
-      margin: 0 0 8px;
-      color: var(--fancy-text); /* Visible yellow on dark background */
-      font-family: 'Pacifico', cursive;
-      font-size: 24px;
-      padding: 10px;
-      text-align: center;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Subtle shadow for better visibility */
+      padding: 12px;
     }
     .copy-btn {
-      margin-top: 5px;
+      margin-top: 6px;
       padding: 6px 10px;
       font-size: 12px;
       border: none;
@@ -262,52 +143,76 @@
       background: var(--accent);
       color: #fff;
       cursor: pointer;
-      transition: background 0.3s;
     }
-    .copy-btn:hover { background: var(--highlight) }
-    #vipSection { display: none; margin-top: 20px }
-    /* profile popup */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer {
+      margin-top: 30px;
+      color: #fff;
+      font-size: 14px;
+      background: var(--fancy-bg);
+      padding: 20px;
+      border-radius: 12px;
+      font-family: 'Pacifico', cursive;
+      border: 2px solid var(--fancy-text);
+      text-align: center;
+    }
+    /* Popup near profile */
     .popup {
       position: absolute;
-      top: 140px;
-      left: 40px;
+      top: 100px;
+      left: 30px;
       background: #fff;
       padding: 10px;
       border-radius: 50%;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
+      box-shadow: 0 6px 20px rgba(0,0,0,.4);
       display: none;
       z-index: 2000;
       border: 3px solid var(--fancy-text);
+      transition: transform 0.3s, opacity 0.3s;
+      opacity: 0;
+    }
+    .popup.show {
+      display: block;
+      transform: scale(1);
+      opacity: 1;
     }
     .popup img {
-      width: 160px;
-      height: 160px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <div style="position:relative">
-        <img src="images/profile.png" alt="Group photo" class="brand-img" id="groupPhoto">
-        <div class="popup" id="popupPhoto">
-          <img src="images/profile.png" alt="Profile full view">
-        </div>
+      <!-- Profile inside header -->
+      <img src="images/profile.png" alt="Profile" class="brand-img" id="groupPhoto">
+      <!-- Popup near profile -->
+      <div class="popup" id="popupPhoto">
+        <img src="images/profile.png" alt="Profile full view" id="popupImg">
       </div>
-      <div>
-        <h1>COLIN BRIGHT TIPS</h1>
-        <p class="lead">Join COLIN BRIGHT TIPS VIP for curated, high-value betting tips and tickets. Choose a currency below, pay using any supported method, then send proof to our Telegram handle to receive the VIP link.</p>
-      </div>
+      <h1>COLIN BRIGHT TIPS</h1>
+      <p class="lead">Join COLIN BRIGHT TIPS VIP for curated, high-value betting tips and tickets. Pay with your method then send proof to Telegram to get the VIP link.</p>
     </header>
-
     <section style="margin-top:22px">
-      <h2>Monthly VIP Charges</h2>
+      <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">Monthly VIP Charges</h2>
       <div class="card">
         <ul class="charges-grid">
           <li>25 USD / 25 Euros</li>
-          <li>0.0065 BTC</li>
+          <li>0.00021 BTC</li>
           <li>15,000 CFA Francs</li>
           <li>250 Ghana Cedis</li>
           <li>20,000 Naira</li>
@@ -317,30 +222,28 @@
           <li>60,000 UGX</li>
           <li>400 Zambian Kwacha</li>
         </ul>
-        <p style="font-family: 'Times New Roman', serif; font-weight: bold; font-size: 18px; color: #000000; text-align: center; margin: 10px 0;">PAY THE EXACT AMOUNT</p>
-        <p style="font-family: 'Times New Roman', serif; font-weight: bold; font-size: 18px; color: #000000; text-align: center; margin: 10px 0;">⚠️ <strong><u>STRICTLY NO PAY AFTER, NO FREE FIXED MATCHES AND NO HALF PAYMENTS</u></strong></p>
+        <p style="text-align:center;font-weight:bold;font-size:18px;">⚠️ Pay the exact amount to avoid inconveniences<br>STRICTLY NO FREE MATCHES / HALF PAYMENTS</p>
       </div>
     </section>
-
     <section style="margin-top:26px">
-      <h2>Payment Methods</h2>
+      <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">Payment Methods</h2>
       <div class="card">
         <ul class="payments-list">
           <li>
             <div class="payment-header" onclick="toggleDetails('usdt')">USDT (TRC20)<span>▼</span></div>
-            <div class="payment-details" id="usdt"><strong>Address:</strong> TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW<br><button class="copy-btn" onclick="copyText('TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW', 'usdt')">Copy</button></div>
+            <div class="payment-details" id="usdt"><strong>Address:</strong> TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW<br><button class="copy-btn" onclick="copyText('TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW','usdt')">Copy</button></div>
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('skrill')">Skrill<span>▼</span></div>
-            <div class="payment-details" id="skrill"><strong>Email:</strong> muthuricollins43@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins43@gmail.com', 'skrill')">Copy</button></div>
+            <div class="payment-details" id="skrill"><strong>Email:</strong> muthuricollins43@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins43@gmail.com','skrill')">Copy</button></div>
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('eversend')">Eversend<span>▼</span></div>
-            <div class="payment-details" id="eversend"><strong>Link:</strong> <a href="https://eversend.me/collm" target="_blank">https://eversend.me/collm</a></div>
+            <div class="payment-details" id="eversend"><a href="https://eversend.me/collm" target="_blank">https://eversend.me/collm</a></div>
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('binance')">Binance<span>▼</span></div>
-            <div class="payment-details" id="binance"><strong>ID:</strong> 439629329<br><button class="copy-btn" onclick="copyText('439629329', 'binance')">Copy</button></div>
+            <div class="payment-details" id="binance"><strong>ID:</strong> 439629329<br><button class="copy-btn" onclick="copyText('439629329','binance')">Copy</button></div>
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('mtn')">MTN Mobile Money (Ghana)<span>▼</span></div>
@@ -352,100 +255,64 @@
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('mpesa')">M-Pesa<span>▼</span></div>
-            <div class="payment-details" id="mpesa"><strong>Name:</strong> ZIPPORAH JOSHUA<br><strong>Number:</strong> +254706415082<br><button class="copy-btn" onclick="copyText('+254706415082', 'mpesa')">Copy</button></div>
+            <div class="payment-details" id="mpesa"><strong>Name:</strong> ZIPPORAH JOSHUA<br><strong>Number:</strong> +254706415082<br><button class="copy-btn" onclick="copyText('+254706415082','mpesa')">Copy</button></div>
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('airtel')">Airtel Money<span>▼</span></div>
-            <div class="payment-details" id="airtel"><strong>Name:</strong> COLLINS MUTHURI<br><strong>Number:</strong> +254784223005<br><button class="copy-btn" onclick="copyText('+254784223005', 'airtel')">Copy</button></div>
+            <div class="payment-details" id="airtel"><strong>Name:</strong> COLLINS MUTHURI<br><strong>Number:</strong> +254784223005<br><button class="copy-btn" onclick="copyText('+254784223005','airtel')">Copy</button></div>
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('minipay')">MiniPay<span>▼</span></div>
-            <div class="payment-details" id="minipay"><strong>Number:</strong> +254114687523<br><button class="copy-btn" onclick="copyText('+254114687523', 'minipay')">Copy</button></div>
+            <div class="payment-details" id="minipay"><strong>Number:</strong> +254114687523<br><button class="copy-btn" onclick="copyText('+254114687523','minipay')">Copy</button></div>
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('yellowcard')">Yellow Card<span>▼</span></div>
-            <div class="payment-details" id="yellowcard"><strong>Email:</strong> muthuricollins771@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins771@gmail.com', 'yellowcard')">Copy</button></div>
+            <div class="payment-details" id="yellowcard"><strong>Email:</strong> muthuricollins771@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins771@gmail.com','yellowcard')">Copy</button></div>
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('paypal')">Paypal<span>▼</span></div>
-            <div class="payment-details" id="paypal"><strong>Email:</strong> kinyaoneis@gmail.com<br><button class="copy-btn" onclick="copyText('kinyaoneis@gmail.com', 'paypal')">Copy</button></div>
+            <div class="payment-details" id="paypal"><strong>Email:</strong> kinyaoneis@gmail.com<br><button class="copy-btn" onclick="copyText('kinyaoneis@gmail.com','paypal')">Copy</button></div>
           </li>
           <li>
             <div class="payment-header" onclick="toggleDetails('bybitpay')">Bybit Pay<span>▼</span></div>
-            <div class="payment-details" id="bybitpay"><strong>UID:</strong> 177383003<br><button class="copy-btn" onclick="copyText('177383003', 'bybitpay')">Copy</button></div>
+            <div class="payment-details" id="bybitpay"><strong>UID:</strong> 177383003<br><button class="copy-btn" onclick="copyText('177383003','bybitpay')">Copy</button></div>
           </li>
         </ul>
       </div>
     </section>
-
     <footer>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-        <div class="muted">After payment: send proof on Telegram to receive the VIP invite link.</div>
-        <a class="btn" href="https://t.me/on_coole" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M9.2 16.2 8.8 20c.6 0 .8-.3 1.1-.6l2.6-2.5 5.4 3.9c1 .5 1.7.2 2-.9l3.6-16.9c.4-1.7-.6-2.3-1.6-1.9L1.6 9.7c-1.7.7-1.7 1.6-.3 2l5.7 1.8 13.3-8.2c.6-.4 1.2-.2.7.2"/></svg>
-          Send proof (Telegram)
-        </a>
-      </div>
-      <div id="vipSection">
-        <div style="margin-top:10px" class="muted">VIP Channel: <a href="https://t.me/on_coole" target="_blank">https://t.me/on_coole</a></div>
-      </div>
-      <div style="margin-top:20px;text-align:center">© 2025 COLIN BRIGHT TIPS. All rights reserved.</div>
+      <p>After payment, send proof on Telegram:</p>
+      <a class="btn" href="https://t.me/on_coole" target="_blank">Send Proof (Telegram)</a>
+      <p style="margin-top:15px;">© 2025 COLIN BRIGHT TIPS. All rights reserved.</p>
     </footer>
   </div>
-
   <script>
-    function confirmPayment(){
-      document.getElementById('vipSection').style.display = 'block';
-    }
-
-    function toggleDetails(id){
-      // Close all payment details first (accordion behavior)
-      const allDetails = document.querySelectorAll('.payment-details');
-      allDetails.forEach(detail => {
-        detail.classList.remove('show');
-        const header = detail.previousElementSibling;
-        if (header) header.classList.remove('open');
-      });
-
-      // Toggle the clicked one (closes if already open, opens if closed)
+    function toggleDetails(id) {
       const elem = document.getElementById(id);
       const header = elem.previousElementSibling;
-      const isCurrentlyOpen = elem.classList.contains('show');
-      if (isCurrentlyOpen) {
-        // Close it
-        elem.classList.remove('show');
-        if (header) header.classList.remove('open');
-      } else {
-        // Open it
+      const isOpen = elem.classList.contains('show');
+      document.querySelectorAll('.payment-details').forEach(d => d.classList.remove('show'));
+      document.querySelectorAll('.payment-header').forEach(h => h.classList.remove('open'));
+      if (!isOpen) {
         elem.classList.add('show');
-        if (header) header.classList.add('open');
+        header.classList.add('open');
       }
     }
-
     function copyText(text, id) {
       navigator.clipboard.writeText(text).then(() => {
-        alert("Copied: " + text);
-        // Collapse the payment details immediately after copying
-        const elem = document.getElementById(id);
-        if (elem) {
-          elem.classList.remove('show');
-          const header = elem.previousElementSibling;
-          if (header) header.classList.remove('open');
-        }
+        alert("Copied successfully!");
+        // auto minimize the dropdown after copy
+        document.getElementById(id).classList.remove('show');
+        document.querySelectorAll('.payment-header').forEach(h => h.classList.remove('open'));
       });
     }
-
     const groupPhoto = document.getElementById('groupPhoto');
     const popup = document.getElementById('popupPhoto');
     groupPhoto.addEventListener('click', () => {
-      popup.style.display = 'block';
+      popup.classList.add('show');
     });
-
-    // Close popup when clicking outside or on the image
-    document.addEventListener('click', (e) => {
-      if (popup.style.display === 'block' && !popup.contains(e.target) && e.target !== groupPhoto) {
-        popup.style.display = 'none';
-      }
+    popup.addEventListener('click', () => {
+      popup.classList.remove('show');
     });
   </script>
 </body>
