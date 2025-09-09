@@ -6,19 +6,12 @@
   <title>COLIN BRIGHT TIPS — Subscribe</title>
   <meta name="description" content="Subscribe to COLIN BRIGHT TIPS VIP channel. Pay via M-Pesa, Airtel Money, Binance Pay and more." />
 
-  <!-- SEO + Social sharing -->
-  <meta property="og:title" content="COLIN BRIGHT TIPS — VIP Access" />
-  <meta property="og:description" content="Join COLIN BRIGHT TIPS VIP for curated, high-value betting tips. Multiple payment methods supported." />
-  <meta property="og:image" content="images/profile.png" />
-  <meta property="og:type" content="website" />
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Pacifico&family=Dancing+Script&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --accent: #0b84ff;
       --bg: #000000;
-      --card: #0b1220;
       --muted: #9aa4b2;
       --highlight: #ff4444;
       --fancy-bg: linear-gradient(135deg, #ff6f61, #6b5b95);
@@ -30,26 +23,6 @@
       margin: 0;
       background: var(--bg);
       color: #0f1724;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
-      opacity: 0.3;
-      z-index: -1;
-    }
-
-    .container {
-      max-width: 980px;
-      margin: 36px auto;
-      padding: 20px;
-      position: relative;
-      z-index: 1;
     }
 
     /* Fixed profile top-left */
@@ -71,7 +44,7 @@
     /* Title in center */
     header {
       text-align: center;
-      margin-top: 20px;
+      margin-top: 40px;
       background: var(--fancy-bg);
       padding: 20px;
       border-radius: 12px;
@@ -88,9 +61,8 @@
       color: var(--fancy-text);
     }
 
-    /* Cards */
     .card {
-      background: linear-gradient(135deg, #ffffff, #f0f0f0);
+      background: #fff;
       padding: 18px;
       border-radius: 12px;
       box-shadow: 0 6px 18px rgba(2, 8, 23, .15);
@@ -113,9 +85,7 @@
       font-family: 'Dancing Script', cursive;
       color: #000;
       border: 2px solid var(--accent);
-      transition: transform 0.3s;
     }
-    .charges-grid li:hover { transform: scale(1.05); }
 
     .payments-list { list-style: none; padding: 0; margin: 12px 0 }
     .payments-list li { margin-bottom: 12px }
@@ -130,12 +100,7 @@
       align-items: center;
       font-family: 'Pacifico', cursive;
       color: #000;
-      box-shadow: 0 2px 8px rgba(11, 132, 255, 0.2);
-      transition: background 0.3s, transform 0.3s;
-    }
-    .payment-header:hover {
-      transform: scale(1.02);
-      background: rgba(11, 132, 255, 0.1);
+      transition: background 0.3s;
     }
     .payment-header.open {
       border-color: var(--fancy-text);
@@ -171,7 +136,6 @@
       color: #fff;
       cursor: pointer;
     }
-    .copy-btn:hover { background: var(--highlight); }
 
     .btn {
       display: inline-flex;
@@ -183,12 +147,6 @@
       color: #fff;
       text-decoration: none;
       font-weight: bold;
-      font-size: 16px;
-      transition: transform 0.3s, background 0.3s;
-    }
-    .btn:hover {
-      transform: scale(1.05);
-      background: var(--highlight);
     }
 
     footer {
@@ -203,7 +161,7 @@
       text-align: center;
     }
 
-    /* Popup photo */
+    /* Popup */
     .popup {
       position: fixed;
       top: 50%; left: 50%;
@@ -233,10 +191,14 @@
   </style>
 </head>
 <body>
+
+  <!-- Profile top-left -->
+  <img src="images/profile.png" alt="Profile" class="brand-img" id="groupPhoto">
+
   <div class="container">
     <header>
       <h1>COLIN BRIGHT TIPS</h1>
-      <p class="lead">Join COLIN BRIGHT TIPS VIP for curated, high-value betting tips and tickets. Choose a currency, pay with your method, then send proof to our Telegram to receive the VIP link.</p>
+      <p class="lead">Join COLIN BRIGHT TIPS VIP for curated, high-value betting tips and tickets. Pay with your method then send proof to Telegram to get the VIP link.</p>
     </header>
 
     <section style="margin-top:22px">
@@ -300,9 +262,7 @@
 
     <footer>
       <p>After payment, send proof on Telegram:</p>
-      <a class="btn" href="https://t.me/on_coole" target="_blank">
-        Send Proof (Telegram)
-      </a>
+      <a class="btn" href="https://t.me/on_coole" target="_blank">Send Proof (Telegram)</a>
       <p style="margin-top:15px;">© 2025 COLIN BRIGHT TIPS. All rights reserved.</p>
     </footer>
   </div>
@@ -316,11 +276,9 @@
     function toggleDetails(id) {
       const elem = document.getElementById(id);
       const header = elem.previousElementSibling;
-
       const isOpen = elem.classList.contains('show');
       document.querySelectorAll('.payment-details').forEach(d => d.classList.remove('show'));
       document.querySelectorAll('.payment-header').forEach(h => h.classList.remove('open'));
-
       if (!isOpen) {
         elem.classList.add('show');
         header.classList.add('open');
@@ -335,13 +293,10 @@
 
     const groupPhoto = document.getElementById('groupPhoto');
     const popup = document.getElementById('popupPhoto');
-    const popupImg = document.getElementById('popupImg');
 
     groupPhoto.addEventListener('click', () => {
       popup.classList.add('show');
     });
-
-    // Close popup on any click
     popup.addEventListener('click', () => {
       popup.classList.remove('show');
     });
