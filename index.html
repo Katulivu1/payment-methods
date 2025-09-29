@@ -65,8 +65,9 @@
     p.lead {
       margin: 6px 0;
       font-size: 18px;
-      font-family: 'Dancing Script', cursive;
-      color: var(--fancy-text);
+      font-family: "Times New Roman", serif;
+      font-weight: bold;
+      color: #000;
     }
     .join-telegram {
       text-align: center;
@@ -374,16 +375,20 @@
       </div>
     </section>
 
-    <footer>
+        <footer>
       <p>After payment, send proof on Telegram:</p>
       <a class="btn" href="https://t.me/on_collee" target="_blank">Send Proof (Telegram)</a>
-      <p style="margin-top:15px;">© 2025 COLIN BRIGHT TIPS. All rights reserved.</p>
+      <p style="margin-top:15px;">
+        © 2025 COLIN BRIGHT TIPS. All rights reserved. <br>
+        <span style="color: var(--highlight); font-weight:bold;">GAMBLE RESPONSIBLY | 18+</span>
+      </p>
     </footer>
   </div>
 
   <script>
     function toggleDetails(id) {
-      const elem = document.getElementById(id);      const header = elem.previousElementSibling;
+      const elem = document.getElementById(id);
+      const header = elem.previousElementSibling;
       if (elem.classList.contains("show")) {
         elem.classList.remove("show");
         header.classList.remove("open");
@@ -424,4 +429,3 @@
   </script>
 </body>
 </html>
-
