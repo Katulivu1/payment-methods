@@ -68,6 +68,17 @@
       font-family: 'Dancing Script', cursive;
       color: var(--fancy-text);
     }
+    .join-telegram {
+      text-align: center;
+      margin: 15px 0;
+    }
+    .join-telegram a {
+      font-family: "Times New Roman", serif;
+      font-weight: bold;
+      color: #fff;
+      font-size: 18px;
+      text-decoration: none;
+    }
     .card {
       background: #fff;
       padding: 18px;
@@ -286,8 +297,13 @@
         <img src="images/profile.png" alt="Profile full view" id="popupImg">
       </div>
       <h1>COLIN BRIGHT TIPS</h1>
-      <p class="lead">Join COLIN BRIGHT TIPS VIP for curated, high-value betting tips and tickets. Pay with your method then send proof to Telegram to get the VIP link.</p>
+      <p class="lead">Join COLIN BRIGHT TIPS VIP for accurate, well analysed, high-value betting tips and tickets. Pay with your method then send proof to Telegram to get the VIP link.</p>
     </header>
+
+    <!-- JOIN TELEGRAM -->
+    <div class="join-telegram">
+      <a href="https://t.me/+qB9x_srqjgc5NzU0" target="_blank">Join our Telegram Channel</a>
+    </div>
 
     <!-- ABOUT SECTION -->
     <section class="about-section">
@@ -317,16 +333,18 @@
       <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">Monthly VIP Charges</h2>
       <div class="card">
         <ul class="charges-grid">
-          <li>25 USD / 25 Euros</li>
+          <li>16 USD / 15 Euros</li>
           <li>0.00021 BTC</li>
-          <li>15,000 CFA Francs</li>
-          <li>250 Ghana Cedis</li>
+          <li>11,500 CFA Francs</li>
+          <li>220 Ghana Cedis</li>
           <li>20,000 Naira</li>
-          <li>2,500 KSH</li>
+          <li>2,000 KSH</li>
           <li>6,000 ZWL</li>
           <li>50,000 TSH</li>
           <li>60,000 UGX</li>
           <li>400 Zambian Kwacha</li>
+          <li>285 SA RDS</li>
+          <li>20 PAYPAL USD</li>
         </ul>
         <p style="text-align:center;font-weight:bold;font-size:18px;">⚠️ Pay the exact amount to avoid inconveniences<br>STRICTLY NO FREE MATCHES / HALF PAYMENTS</p>
       </div>
@@ -358,38 +376,52 @@
 
     <footer>
       <p>After payment, send proof on Telegram:</p>
-      <a class="btn" href="https://t.me/on_coole" target="_blank">Send Proof (Telegram)</a>
+      <a class="btn" href="https://t.me/on_collee" target="_blank">Send Proof (Telegram)</a>
       <p style="margin-top:15px;">© 2025 COLIN BRIGHT TIPS. All rights reserved.</p>
     </footer>
   </div>
 
   <script>
     function toggleDetails(id) {
-      const elem = document.getElementById(id);
-      const header = elem.previousElementSibling;
-      const isOpen = elem.classList.contains('show');
-      document.querySelectorAll('.payment-details').forEach(d => d.classList.remove('show'));
-      document.querySelectorAll('.payment-header').forEach(h => h.classList.remove('open'));
-      if (!isOpen) {
-        elem.classList.add('show');
-        header.classList.add('open');
+      const elem = document.getElementById(id);      const header = elem.previousElementSibling;
+      if (elem.classList.contains("show")) {
+        elem.classList.remove("show");
+        header.classList.remove("open");
+      } else {
+        document.querySelectorAll(".payment-details").forEach(d => d.classList.remove("show"));
+        document.querySelectorAll(".payment-header").forEach(h => h.classList.remove("open"));
+        elem.classList.add("show");
+        header.classList.add("open");
       }
     }
+
     function copyText(text, id) {
       navigator.clipboard.writeText(text).then(() => {
-        alert("Copied successfully!");
-        document.getElementById(id).classList.remove('show');
-        document.querySelectorAll('.payment-header').forEach(h => h.classList.remove('open'));
+        const btn = document.querySelector(`#${id} .copy-btn`);
+        const original = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => (btn.textContent = original), 1500);
       });
     }
-    const groupPhoto = document.getElementById('groupPhoto');
-    const popup = document.getElementById('popupPhoto');
-    groupPhoto.addEventListener('click', () => {
-      popup.classList.add('show');
+
+    const groupPhoto = document.getElementById("groupPhoto");
+    const popup = document.getElementById("popupPhoto");
+    const popupImg = document.getElementById("popupImg");
+
+    groupPhoto.addEventListener("click", () => {
+      popup.classList.toggle("show");
     });
-    popup.addEventListener('click', () => {
-      popup.classList.remove('show');
+
+    popupImg.addEventListener("click", () => {
+      popup.classList.remove("show");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!groupPhoto.contains(e.target) && !popup.contains(e.target)) {
+        popup.classList.remove("show");
+      }
     });
   </script>
 </body>
 </html>
+
