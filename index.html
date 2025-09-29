@@ -97,7 +97,7 @@
     .payments-columns {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 10px; /* Reduced gap for better fit */
+      gap: 20px;
     }
     .payments-list {
       list-style: none;
@@ -105,12 +105,12 @@
       margin: 12px 0;
     }
     .payments-list li {
-      margin-bottom: 8px; /* Reduced margin for better fit */
+      margin-bottom: 12px;
     }
     .payment-header {
-      padding: 10px; /* Reduced padding */
-      border: 2px solid var(--accent); /* Reduced border thickness */
-      border-radius: 15px; /* Slightly reduced radius */
+      padding: 12px;
+      border: 3px solid var(--accent);
+      border-radius: 18px;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
@@ -119,10 +119,9 @@
       color: #000;
       transition: background 0.3s;
       word-break: break-word;
-      font-size: 16px; /* Base font size */
     }
     .payment-header span {
-      font-size: 12px;
+      font-size: 14px;
       margin-left: 5px;
       flex-shrink: 0;
     }
@@ -135,27 +134,27 @@
       overflow: hidden;
       opacity: 0;
       transition: max-height 0.4s ease, opacity 0.4s ease;
-      margin-top: 5px; /* Reduced margin */
-      padding: 8px; /* Reduced padding */
-      border-left: 2px solid var(--accent); /* Reduced border thickness */
-      border-radius: 6px; /* Reduced radius */
+      margin-top: 6px;
+      padding: 0 10px;
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
       background: #fff;
-      font-size: 12px; /* Base font size */
+      font-size: 14px;
       color: #000;
       overflow-wrap: break-word;
       word-break: break-all;
     }
     .payment-details.show {
-      max-height: 180px; /* Reduced max-height */
+      max-height: 200px;
       opacity: 1;
-      padding: 8px;
+      padding: 12px;
     }
     .copy-btn {
-      margin-top: 4px; /* Reduced margin */
-      padding: 5px 8px; /* Reduced padding */
-      font-size: 10px; /* Reduced font size */
+      margin-top: 6px;
+      padding: 6px 10px;
+      font-size: 12px;
       border: none;
-      border-radius: 5px; /* Reduced radius */
+      border-radius: 6px;
       background: var(--accent);
       color: #fff;
       cursor: pointer;
@@ -163,37 +162,36 @@
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px; /* Reduced gap */
-      padding: 10px 15px; /* Reduced padding */
-      border-radius: 8px; /* Reduced radius */
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 10px;
       background: var(--accent);
       color: #fff;
       text-decoration: none;
       font-weight: bold;
-      font-size: 14px; /* Reduced font size */
     }
     footer {
-      margin-top: 20px; /* Reduced margin */
+      margin-top: 30px;
       color: #fff;
-      font-size: 12px; /* Reduced font size */
+      font-size: 14px;
       background: var(--fancy-bg);
-      padding: 15px;
-      border-radius: 10px; /* Reduced radius */
+      padding: 20px;
+      border-radius: 12px;
       font-family: 'Pacifico', cursive;
       border: 2px solid var(--fancy-text);
       text-align: center;
     }
     .popup {
       position: absolute;
-      top: 80px; /* Reduced top position */
-      left: 20px; /* Reduced left position */
+      top: 100px;
+      left: 30px;
       background: #fff;
-      padding: 8px; /* Reduced padding */
-      border-radius: 40%; /* Adjusted to fit better */
-      box-shadow: 0 4px 15px rgba(0,0,0,.4);
+      padding: 10px;
+      border-radius: 50%;
+      box-shadow: 0 6px 20px rgba(0,0,0,.4);
       display: none;
       z-index: 2000;
-      border: 2px solid var(--fancy-text); /* Reduced border thickness */
+      border: 3px solid var(--fancy-text);
       transition: transform 0.3s, opacity 0.3s;
       opacity: 0;
     }
@@ -203,8 +201,8 @@
       opacity: 1;
     }
     .popup img {
-      width: 100px; /* Reduced size */
-      height: 100px; /* Reduced size */
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
       cursor: pointer;
@@ -217,51 +215,42 @@
         padding: 0 10px;
       }
       header {
-        padding: 30px 10px 10px;
+        padding: 40px 15px 15px;
       }
       h1 {
-        font-size: 20px;
+        font-size: 24px;
         margin-left: 0;
       }
       p.lead {
-        font-size: 14px;
+        font-size: 16px;
       }
       .card {
-        padding: 10px;
+        padding: 12px;
       }
       .charges-grid {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 6px;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 8px;
       }
       .charges-grid li {
-        padding: 6px;
-        font-size: 12px;
+        padding: 8px;
+        font-size: 13px;
       }
       .payment-header {
-        font-size: 12px; /* Reduced font size */
-        padding: 8px;
+        font-size: 14px;
+        padding: 10px;
         flex-wrap: wrap;
         align-items: flex-start;
       }
       .payment-header span {
-        font-size: 10px;
+        font-size: 12px;
         margin-top: 2px;
       }
       .payment-details {
-        font-size: 10px; /* Reduced font size */
-        padding: 6px;
-      }
-      .copy-btn {
-        font-size: 9px;
-        padding: 4px 6px;
+        font-size: 12px;
       }
       footer {
-        padding: 12px;
-        font-size: 11px;
-      }
-      .btn {
-        font-size: 12px;
-        padding: 8px 12px;
+        padding: 15px;
+        font-size: 13px;
       }
     }
   </style>
@@ -274,7 +263,7 @@
         <img src="images/profile.png" alt="Profile full view" id="popupImg">
       </div>
       <h1>COLIN BRIGHT TIPS</h1>
-      <p class="lead">Join COLIN BRIGHT TIPS VIP for curated, high-value betting tips and tickets. Pay with your method then send proof to Telegram to get the VIP link.</p>
+      <p class="lead">Join COLIN BRIGHT TIPS VIP for curated, high-value betting tips and tickets. Pay with your method then send proof to Telegram to get the VIP link. <a href="https://t.me/on_Collee" target="_blank" style="color: var(--fancy-text); text-decoration: underline;">Send Proof</a><br><a href="https://t.me/+qB9x_srqjgc5NzU0" target="_blank" style="color: var(--fancy-text); text-decoration: underline;">Join our Telegram channel</a></p>
     </header>
     <section style="margin-top:22px">
       <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">Monthly VIP Charges</h2>
@@ -293,10 +282,10 @@
           <li>285 SA RDS</li>
           <li>20 PAYPAL USD</li>
         </ul>
-        <p style="text-align:center;font-weight:bold;font-size:16px;">⚠️ Pay the exact amount to avoid inconveniences<br>STRICTLY NO FREE MATCHES / HALF PAYMENTS</p>
+        <p style="text-align:center;font-weight:bold;font-size:18px;">⚠️ Pay the exact amount to avoid inconveniences<br>STRICTLY NO FREE MATCHES / HALF PAYMENTS</p>
       </div>
     </section>
-    <section style="margin-top:20px">
+    <section style="margin-top:26px">
       <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">Payment Methods</h2>
       <div class="card">
         <div class="payments-columns">
@@ -321,8 +310,8 @@
     </section>
     <footer>
       <p>After payment, send proof on Telegram:</p>
-      <a class="btn" href="https://t.me/on_coole" target="_blank">Send Proof (Telegram)</a>
-      <p style="margin-top:15px;">© 2025 COLIN BRIGHT TIPS. All rights reserved.</p>
+      <a class="btn" href="https://t.me/on_Collee" target="_blank">Send Proof (Telegram)</a>
+      <p style="margin-top:15px;">© 2025 COLIN BRIGHT TIPS. All rights reserved. <span style="color: var(--highlight);">Gamble responsibly 18+</span></p>
     </footer>
   </div>
   <script>
