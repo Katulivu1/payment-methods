@@ -24,6 +24,7 @@
     }
     .container {
       max-width: 900px;
+      min-width: 300px;
       margin: 0 auto;
       padding: 0 15px;
     }
@@ -90,19 +91,21 @@
       font-family: 'Dancing Script', cursive;
       color: #000;
       border: 2px solid var(--accent);
+      overflow: hidden;
+      word-break: break-word;
     }
     .payments-columns {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
     }
     .payments-list {
       list-style: none;
       padding: 0;
-      margin: 12px 0
+      margin: 12px 0;
     }
     .payments-list li {
-      margin-bottom: 12px
+      margin-bottom: 12px;
     }
     .payment-header {
       padding: 12px;
@@ -115,6 +118,12 @@
       font-family: 'Pacifico', cursive;
       color: #000;
       transition: background 0.3s;
+      word-break: break-word;
+    }
+    .payment-header span {
+      font-size: 14px;
+      margin-left: 5px;
+      flex-shrink: 0;
     }
     .payment-header.open {
       border-color: var(--fancy-text);
@@ -132,6 +141,8 @@
       background: #fff;
       font-size: 14px;
       color: #000;
+      overflow-wrap: break-word;
+      word-break: break-all;
     }
     .payment-details.show {
       max-height: 200px;
@@ -196,6 +207,52 @@
       object-fit: cover;
       cursor: pointer;
     }
+    @media (max-width: 600px) {
+      .payments-columns {
+        grid-template-columns: 1fr;
+      }
+      .container {
+        padding: 0 10px;
+      }
+      header {
+        padding: 40px 15px 15px;
+      }
+      h1 {
+        font-size: 24px;
+        margin-left: 0;
+      }
+      p.lead {
+        font-size: 16px;
+      }
+      .card {
+        padding: 12px;
+      }
+      .charges-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 8px;
+      }
+      .charges-grid li {
+        padding: 8px;
+        font-size: 13px;
+      }
+      .payment-header {
+        font-size: 14px;
+        padding: 10px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+      .payment-header span {
+        font-size: 12px;
+        margin-top: 2px;
+      }
+      .payment-details {
+        font-size: 12px;
+      }
+      footer {
+        padding: 15px;
+        font-size: 13px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -215,7 +272,7 @@
           <li>16 USD / 15 Euros</li>
           <li>0.00021 BTC</li>
           <li>12,000 CFA Francs</li>
-          <li>250 Ghana Cedis</li>
+          <li>220 Ghana Cedis</li>
           <li>20,000 Naira</li>
           <li>2,000 KSH</li>
           <li>6,000 ZWL</li>
