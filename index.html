@@ -51,6 +51,7 @@
       border: 3px solid var(--fancy-text);
       box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
       position: relative;
+      margin-bottom: 20px;
     }
     header .brand-img {
       position: absolute;
@@ -209,7 +210,7 @@
     }
     .nav {
       position: fixed;
-      top: 0;
+      top: 200px; /* Adjusted to be under header */
       left: 0;
       width: 100%;
       background: var(--fancy-bg);
@@ -280,6 +281,7 @@
         font-size: 13px;
       }
       .nav {
+        top: 160px; /* Adjusted for mobile header height */
         padding: 5px 10px;
         gap: 10px;
       }
@@ -293,11 +295,6 @@
   </style>
 </head>
 <body>
-  <div class="nav">
-    <a href="#charges">Monthly VIP Charges</a>
-    <a href="#payments">Payment Methods</a>
-    <a href="#about">About</a>
-  </div>
   <div class="container">
     <header>
       <img src="images/profile.png" alt="Profile" class="brand-img" id="groupPhoto">
@@ -307,49 +304,10 @@
       <h1>COLIN BRIGHT TIPS</h1>
       <p class="lead">Join COLIN BRIGHT TIPS VIP for curated, high-value betting tips and tickets. Pay with your method then send proof to Telegram to get the VIP link. <br><a href="https://t.me/+qB9x_srqjgc5NzU0" target="_blank" style="color: white; font-weight: bold; font-family: 'Times New Roman', Times, serif; text-decoration: underline;">Join our Telegram channel</a></p>
     </header>
-    <section id="charges" class="section">
-      <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">Monthly VIP Charges</h2>
-      <div class="card">
-        <ul class="charges-grid">
-          <li>16 USD / 15 Euros</li>
-          <li>0.00021 BTC</li>
-          <li>11,500 CFA Francs</li>
-          <li>220 Ghana Cedis</li>
-          <li>20,000 Naira</li>
-          <li>2,000 KSH</li>
-          <li>6,000 ZWL</li>
-          <li>50,000 TSH</li>
-          <li>60,000 UGX</li>
-          <li>400 Zambian Kwacha</li>
-          <li>285 SA RDS</li>
-          <li>20 PAYPAL USD</li>
-        </ul>
-        <p style="text-align:center;font-weight:bold;font-size:18px;">⚠️ Pay the exact amount to avoid inconveniences<br>STRICTLY NO FREE MATCHES / HALF PAYMENTS</p>
-      </div>
-    </section>
-    <section id="payments" class="section">
-      <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">Payment Methods</h2>
-      <div class="card">
-        <div class="payments-columns">
-          <ul class="payments-list">
-            <li><div class="payment-header" onclick="toggleDetails('usdt')">USDT (TRC20)<span>▼</span></div><div class="payment-details" id="usdt"><strong>Address:</strong> TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW<br><button class="copy-btn" onclick="copyText('TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW','usdt')">Copy</button></div></li>
-            <li><div class="payment-header" onclick="toggleDetails('skrill')">Skrill<span>▼</span></div><div class="payment-details" id="skrill"><strong>Email:</strong> muthuricollins43@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins43@gmail.com','skrill')">Copy</button></div></li>
-            <li><div class="payment-header" onclick="toggleDetails('eversend')">Eversend<span>▼</span></div><div class="payment-details" id="eversend"><a href="https://eversend.me/collm" target="_blank">https://eversend.me/collm</a></div></li>
-            <li><div class="payment-header" onclick="toggleDetails('binance')">Binance<span>▼</span></div><div class="payment-details" id="binance"><strong>ID:</strong> 439629329<br><button class="copy-btn" onclick="copyText('439629329','binance')">Copy</button></div></li>
-            <li><div class="payment-header" onclick="toggleDetails('mtn')">MTN Mobile Money (Ghana)<span>▼</span></div><div class="payment-details" id="mtn">DM on Telegram for guidance.</div></li>
-            <li><div class="payment-header" onclick="toggleDetails('bank')">Bank Transfer (Nigeria)<span>▼</span></div><div class="payment-details" id="bank">DM on Telegram for guidance.</div></li>
-          </ul>
-          <ul class="payments-list">
-            <li><div class="payment-header" onclick="toggleDetails('mpesa')">M-Pesa<span>▼</span></div><div class="payment-details" id="mpesa"><strong>Name:</strong> ZIPPORAH JOSHUA<br><strong>Number:</strong> +254706415082<br><button class="copy-btn" onclick="copyText('+254706415082','mpesa')">Copy</button></div></li>
-            <li><div class="payment-header" onclick="toggleDetails('airtel')">Airtel Money<span>▼</span></div><div class="payment-details" id="airtel"><strong>Name:</strong> COLLINS MUTHURI<br><strong>Number:</strong> +254784223005<br><button class="copy-btn" onclick="copyText('+254784223005','airtel')">Copy</button></div></li>
-            <li><div class="payment-header" onclick="toggleDetails('minipay')">MiniPay<span>▼</span></div><div class="payment-details" id="minipay"><strong>Number:</strong> +254114687523<br><button class="copy-btn" onclick="copyText('+254114687523','minipay')">Copy</button></div></li>
-            <li><div class="payment-header" onclick="toggleDetails('yellowcard')">Yellow Card<span>▼</span></div><div class="payment-details" id="yellowcard"><strong>Email:</strong> muthuricollins771@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins771@gmail.com','yellowcard')">Copy</button></div></li>
-            <li><div class="payment-header" onclick="toggleDetails('paypal')">Paypal<span>▼</span></div><div class="payment-details" id="paypal"><strong>Email:</strong> kinyaoneis@gmail.com<br><button class="copy-btn" onclick="copyText('kinyaoneis@gmail.com','paypal')">Copy</button></div></li>
-            <li><div class="payment-header" onclick="toggleDetails('bybitpay')">Bybit Pay<span>▼</span></div><div class="payment-details" id="bybitpay"><strong>UID:</strong> 177383003<br><button class="copy-btn" onclick="copyText('177383003','bybitpay')">Copy</button></div></li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    <div class="nav">
+      <a href="#about">About</a>
+      <a href="#vip-section">VIP Section</a>
+    </div>
     <section id="about" class="section">
       <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">About</h2>
       <div class="card">
@@ -375,6 +333,46 @@
           🔥 That’s why Colin Bright Tips provides Sure 2 Odds daily with a proven win rate.<br>
           🎁 Try it yourself and experience the difference!
         </p>
+      </div>
+    </section>
+    <section id="vip-section" class="section">
+      <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">VIP Section</h2>
+      <div class="card">
+        <h3 style="color:var(--accent);font-family:'Pacifico',cursive;">Monthly VIP Charges</h3>
+        <ul class="charges-grid">
+          <li>16 USD / 15 Euros</li>
+          <li>0.00021 BTC</li>
+          <li>11,500 CFA Francs</li>
+          <li>220 Ghana Cedis</li>
+          <li>20,000 Naira</li>
+          <li>2,000 KSH</li>
+          <li>6,000 ZWL</li>
+          <li>50,000 TSH</li>
+          <li>60,000 UGX</li>
+          <li>400 Zambian Kwacha</li>
+          <li>285 SA RDS</li>
+          <li>20 PAYPAL USD</li>
+        </ul>
+        <p style="text-align:center;font-weight:bold;font-size:18px;">⚠️ Pay the exact amount to avoid inconveniences<br>STRICTLY NO FREE MATCHES / HALF PAYMENTS</p>
+        <h3 style="color:var(--accent);font-family:'Pacifico',cursive; margin-top: 20px;">Payment Methods</h3>
+        <div class="payments-columns">
+          <ul class="payments-list">
+            <li><div class="payment-header" onclick="toggleDetails('usdt')">USDT (TRC20)<span>▼</span></div><div class="payment-details" id="usdt"><strong>Address:</strong> TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW<br><button class="copy-btn" onclick="copyText('TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW','usdt')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('skrill')">Skrill<span>▼</span></div><div class="payment-details" id="skrill"><strong>Email:</strong> muthuricollins43@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins43@gmail.com','skrill')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('eversend')">Eversend<span>▼</span></div><div class="payment-details" id="eversend"><a href="https://eversend.me/collm" target="_blank">https://eversend.me/collm</a></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('binance')">Binance<span>▼</span></div><div class="payment-details" id="binance"><strong>ID:</strong> 439629329<br><button class="copy-btn" onclick="copyText('439629329','binance')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('mtn')">MTN Mobile Money (Ghana)<span>▼</span></div><div class="payment-details" id="mtn">DM on Telegram for guidance.</div></li>
+            <li><div class="payment-header" onclick="toggleDetails('bank')">Bank Transfer (Nigeria)<span>▼</span></div><div class="payment-details" id="bank">DM on Telegram for guidance.</div></li>
+          </ul>
+          <ul class="payments-list">
+            <li><div class="payment-header" onclick="toggleDetails('mpesa')">M-Pesa<span>▼</span></div><div class="payment-details" id="mpesa"><strong>Name:</strong> ZIPPORAH JOSHUA<br><strong>Number:</strong> +254706415082<br><button class="copy-btn" onclick="copyText('+254706415082','mpesa')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('airtel')">Airtel Money<span>▼</span></div><div class="payment-details" id="airtel"><strong>Name:</strong> COLLINS MUTHURI<br><strong>Number:</strong> +254784223005<br><button class="copy-btn" onclick="copyText('+254784223005','airtel')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('minipay')">MiniPay<span>▼</span></div><div class="payment-details" id="minipay"><strong>Number:</strong> +254114687523<br><button class="copy-btn" onclick="copyText('+254114687523','minipay')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('yellowcard')">Yellow Card<span>▼</span></div><div class="payment-details" id="yellowcard"><strong>Email:</strong> muthuricollins771@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins771@gmail.com','yellowcard')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('paypal')">Paypal<span>▼</span></div><div class="payment-details" id="paypal"><strong>Email:</strong> kinyaoneis@gmail.com<br><button class="copy-btn" onclick="copyText('kinyaoneis@gmail.com','paypal')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('bybitpay')">Bybit Pay<span>▼</span></div><div class="payment-details" id="bybitpay"><strong>UID:</strong> 177383003<br><button class="copy-btn" onclick="copyText('177383003','bybitpay')">Copy</button></div></li>
+          </ul>
+        </div>
       </div>
     </section>
     <footer>
