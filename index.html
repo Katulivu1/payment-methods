@@ -15,16 +15,32 @@
       --fancy-bg: linear-gradient(135deg, #ff6f61, #6b5b95);
       --fancy-text: #ffcc00;
     }
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box }
     body {
       font-family: 'Inter', system-ui, Arial, sans-serif;
       margin: 0;
       background: var(--bg);
       color: #0f1724;
     }
-    .container { max-width: 900px; margin: 0 auto; padding: 0 15px; }
-
-    /* Header */
+    .container {
+      max-width: 900px;
+      min-width: 300px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    .brand-img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--fancy-text);
+      cursor: pointer;
+      transition: transform 0.3s;
+      background: #fff;
+    }
+    .brand-img:hover {
+      transform: scale(1.05);
+    }
     header {
       text-align: center;
       background: var(--fancy-bg);
@@ -36,61 +52,139 @@
       box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
       position: relative;
     }
-    .brand-img {
-      width: 70px; height: 70px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--fancy-text);
-      cursor: pointer;
-      background: #fff;
-      position: absolute; top: 15px; left: 15px;
+    header .brand-img {
+      position: absolute;
+      top: 15px;
+      left: 15px;
     }
-    h1 { margin: 0; font-size: 30px; margin-left: 40px; }
-    p.lead { font-size: 18px; font-weight: bold; color: #000; margin-top: 10px; }
-
-    /* Join Telegram */
-    .join-telegram { text-align: center; margin: 20px 0; }
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      margin-left: 40px;
+    }
+    p.lead {
+      margin: 6px 0;
+      font-size: 18px;
+      font-family: "Times New Roman", serif;
+      font-weight: bold;
+      color: #000;
+    }
+    .join-telegram {
+      text-align: center;
+      margin: 15px 0;
+    }
+    /* minimal change: ensure join link is on top and clickable on mobile */
     .join-telegram a {
-      display: inline-block;
+      font-family: "Times New Roman", serif;
+      font-weight: bold;
+      color: #fff;
+      font-size: 18px;
+      text-decoration: none;
+      position: relative;
+      z-index: 3000;
+    }
+    .card {
+      background: #fff;
+      padding: 18px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(2, 8, 23, .15);
+      border: 2px solid var(--accent);
+    }
+    .charges-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      list-style: none;
+      padding: 0;
+      margin: 12px 0;
+    }
+    .charges-grid li {
+      background: #eef2f7;
+      padding: 10px;
+      border-radius: 12px;
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+      color: #000;
+      border: 2px solid var(--accent);
+      overflow: hidden;
+      word-break: break-word;
+    }
+    .payments-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .payments-list {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0;
+    }
+    .payments-list li {
+      margin-bottom: 12px;
+    }
+    .payment-header {
+      padding: 12px;
+      border: 3px solid var(--accent);
+      border-radius: 18px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Pacifico', cursive;
+      color: #000;
+      transition: background 0.3s;
+      word-break: break-word;
+    }
+    .payment-header span {
+      font-size: 14px;
+      margin-left: 5px;
+      flex-shrink: 0;
+    }
+    .payment-header.open {
+      border-color: var(--fancy-text);
+      background: rgba(255, 204, 0, 0.15);
+    }
+    .payment-details {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+      margin-top: 6px;
+      padding: 0 10px;
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      background: #fff;
+      font-size: 14px;
+      color: #000;
+      overflow-wrap: break-word;
+      word-break: break-all;
+    }
+    .payment-details.show {
+      max-height: 200px;
+      opacity: 1;
+      padding: 12px;
+    }
+    .copy-btn {
+      margin-top: 6px;
+      padding: 6px 10px;
+      font-size: 12px;
+      border: none;
+      border-radius: 6px;
       background: var(--accent);
       color: #fff;
-      padding: 12px 20px;
+      cursor: pointer;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px;
       border-radius: 10px;
-      font-weight: bold;
+      background: var(--accent);
+      color: #fff;
       text-decoration: none;
+      font-weight: bold;
     }
-
-    /* Cards, charges, payments */
-    .card { background: #fff; padding: 18px; border-radius: 12px; border: 2px solid var(--accent); }
-    .charges-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 12px; list-style: none; padding: 0; }
-    .charges-grid li {
-      background: #eef2f7; padding: 10px; border-radius: 12px;
-      text-align: center; border: 2px solid var(--accent);
-      font-family: 'Dancing Script', cursive;
-    }
-    .payments-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-
-    .payment-header { padding: 12px; border: 3px solid var(--accent); border-radius: 18px; cursor: pointer;
-      display: flex; justify-content: space-between; align-items: center; transition: 0.3s; }
-    .payment-header.open { border-color: var(--fancy-text); background: rgba(255,204,0,0.15); }
-    .payment-details { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.4s ease; }
-    .payment-details.show { max-height: 200px; opacity: 1; padding: 12px; border-left: 3px solid var(--accent); background: #fff; }
-
-    .copy-btn { margin-top: 6px; padding: 6px 10px; font-size: 12px; border: none; border-radius: 6px; background: var(--accent); color: #fff; cursor: pointer; }
-
-    /* Popup Fix */
-    .popup {
-      position: absolute; top: 100px; left: 30px;
-      background: #fff; padding: 10px; border-radius: 50%;
-      box-shadow: 0 6px 20px rgba(0,0,0,.4);
-      display: none; z-index: 2000;
-      border: 3px solid var(--fancy-text);
-      opacity: 0; pointer-events: none;
-    }
-    .popup.show { display: block; opacity: 1; pointer-events: auto; }
-    .popup img { width: 120px; height: 120px; border-radius: 50%; }
-
-    /* Footer */
     footer {
       margin-top: 30px;
       color: #fff;
@@ -98,26 +192,113 @@
       background: var(--fancy-bg);
       padding: 20px;
       border-radius: 12px;
+      font-family: 'Pacifico', cursive;
       border: 2px solid var(--fancy-text);
       text-align: center;
     }
+    /* minimal change: ensure footer send-proof button is on top and clickable */
     footer .btn {
-      display: inline-block;
-      margin-top: 10px;
-      background: var(--accent);
-      color: #fff;
-      padding: 12px 18px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
+      position: relative;
+      z-index: 3000;
     }
-
+    .popup {
+      position: absolute;
+      top: 100px;
+      left: 30px;
+      background: #fff;
+      padding: 10px;
+      border-radius: 50%;
+      box-shadow: 0 6px 20px rgba(0,0,0,.4);
+      display: none;
+      z-index: 2000;
+      border: 3px solid var(--fancy-text);
+      transition: transform 0.3s, opacity 0.3s;
+      opacity: 0;
+      /* minimal change: when hidden, do not capture pointer events (won't block links) */
+      pointer-events: none;
+    }
+    .popup.show {
+      display: block;
+      transform: scale(1);
+      opacity: 1;
+      /* allow interaction when visible */
+      pointer-events: auto;
+    }
+    .popup img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+    .about-section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 25px;
+      border: 2px solid var(--accent);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .about-section h2 {
+      text-align: center;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: var(--fancy-text);
+      font-family: 'Pacifico', cursive;
+    }
+    .about-section p, .about-section li {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #000;
+    }
+    .about-section ul {
+      padding-left: 20px;
+    }
     @media (max-width: 600px) {
-      h1 { font-size: 24px; }
-      p.lead { font-size: 16px; }
-      .charges-grid { grid-template-columns: repeat(auto-fit, minmax(120px,1fr)); }
-      .payment-header { font-size: 14px; padding: 10px; }
-      footer { font-size: 13px; }
+      .payments-columns {
+        grid-template-columns: 1fr;
+      }
+      .container {
+        padding: 0 10px;
+      }
+      header {
+        padding: 40px 15px 15px;
+      }
+      h1 {
+        font-size: 24px;
+        margin-left: 0;
+      }
+      p.lead {
+        font-size: 16px;
+      }
+      .card {
+        padding: 12px;
+      }
+      .charges-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 8px;
+      }
+      .charges-grid li {
+        padding: 8px;
+        font-size: 13px;
+      }
+      .payment-header {
+        font-size: 14px;
+        padding: 10px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+      .payment-header span {
+        font-size: 12px;
+        margin-top: 2px;
+      }
+      .payment-details {
+        font-size: 12px;
+      }
+      footer {
+        padding: 15px;
+        font-size: 13px;
+      }
     }
   </style>
 </head>
@@ -125,29 +306,96 @@
   <div class="container">
     <header>
       <img src="images/profile.png" alt="Profile" class="brand-img" id="groupPhoto">
-      <div class="popup" id="popupPhoto"><img src="images/profile.png" alt="Profile full view" id="popupImg"></div>
+      <div class="popup" id="popupPhoto">
+        <img src="images/profile.png" alt="Profile full view" id="popupImg">
+      </div>
       <h1>COLIN BRIGHT TIPS</h1>
       <p class="lead">Join COLIN BRIGHT TIPS VIP for accurate, well analysed & high-value betting tickets. Pay with method of your choice then send proof to Telegram to get the VIP link.</p>
     </header>
 
     <!-- JOIN TELEGRAM -->
     <div class="join-telegram">
-      <a href="https://t.me/+qB9x_srqjgc5NzU0" target="_blank" rel="noopener noreferrer">👉 Join our Telegram Channel</a>
+      <a href="https://t.me/+qB9x_srqjgc5NzU0" target="_blank" rel="noopener noreferrer">👉Join our Telegram Channel Here</a>
     </div>
 
-    <!-- Example Section -->
-    <section class="about-section card">
-      <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">ABOUT</h2>
+    <!-- ABOUT SECTION -->
+    <section class="about-section">
+      <h2>ABOUT</h2>
       <p>🔥 Welcome to Colin Bright Tips 🔥<br>
-      We deliver 2–4 odds daily...</p>
+      We deliver 2–4 odds daily, carefully analysed with a sharp focus on consistency and profits. Our goal is simple — 28+ winning days every month.</p>
+      <p>✨ <strong>What you get:</strong></p>
+      <ul>
+        <li>🎯 Daily well-analysed picks</li>
+        <li>📊 Smart and disciplined betting approach</li>
+        <li>🏆 Consistency over luck</li>
+        <li>💰 Focused value, not random overload</li>
+      </ul>
+      <p>🎯 <strong>3 Mistakes Most People Make When Playing 2 Odds</strong></p>
+      <ul>
+        <li>1️⃣ Playing randomly without a plan – 2 odds only work when you follow a system.</li>
+        <li>2️⃣ No rollover discipline – cashing out too early kills the growth potential.</li>
+        <li>3️⃣ Thinking 2 odds is too small – Wrong! That’s where the real money is.</li>
+      </ul>
+      <p>💡 Did you know if you start with just 1,000 on 2 odds and rollover daily for 10 days, you could grow it into over 1,000,000+?</p>
+      <p>👉 The secret is consistency. Stick with 2 odds, not risky jackpots.</p>
+      <p>🔥 That’s why Colin Bright Tips provides Sure 2 Odds daily with a proven win rate.<br>
+      🎁 Try it yourself and experience the difference!</p>
     </section>
 
-    <!-- Footer -->
-    <footer>
-      <p>After payment, send proof on Telegram:</p>
-      <a class="btn" href="https://t.me/on_collee" target="_blank" rel="noopener noreferrer">📩 Send Proof</a>
-      <p style="margin-top:15px;"><span style="color:#000;font-weight:bold;">GAMBLE RESPONSIBLY || 18+</span><br>© 2025 COLIN BRIGHT TIPS</p>
-    </footer>
+    <section style="margin-top:22px">
+      <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">Monthly VIP Charges</h2>
+      <div class="card">
+        <ul class="charges-grid">
+          <li>16 USD / 15 Euros</li>
+          <li>0.00021 BTC</li>
+          <li>11,500 CFA Francs</li>
+          <li>220 Ghana Cedis</li>
+          <li>20,000 Naira</li>
+          <li>2,000 KSH</li>
+          <li>6,000 ZWL</li>
+          <li>50,000 TSH</li>
+          <li>60,000 UGX</li>
+          <li>400 Zambian Kwacha</li>
+          <li>285 SA RDS</li>
+          <li>20 PAYPAL USD</li>
+        </ul>
+        <p style="text-align:center;font-weight:bold;font-size:18px;">⚠️ Pay the exact amount to avoid inconveniences<br>STRICTLY NO FREE MATCHES / HALF PAYMENTS</p>
+      </div>
+    </section>
+
+    <section style="margin-top:26px">
+      <h2 style="text-align:center;color:var(--fancy-text);font-family:'Pacifico',cursive;">Payment Methods</h2>
+      <div class="card">
+        <div class="payments-columns">
+          <ul class="payments-list">
+            <li><div class="payment-header" onclick="toggleDetails('usdt')">USDT (TRC20)<span>▼</span></div><div class="payment-details" id="usdt"><strong>Address:</strong> TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW<br><button class="copy-btn" onclick="copyText('TFNopVyn19PiLgBJpqSz1WPFEi9mv9jnMW','usdt')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('skrill')">Skrill<span>▼</span></div><div class="payment-details" id="skrill"><strong>Email:</strong> muthuricollins43@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins43@gmail.com','skrill')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('eversend')">Eversend<span>▼</span></div><div class="payment-details" id="eversend"><a href="https://eversend.me/collm" target="_blank">https://eversend.me/collm</a></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('binance')">Binance<span>▼</span></div><div class="payment-details" id="binance"><strong>ID:</strong> 439629329<br><button class="copy-btn" onclick="copyText('439629329','binance')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('mtn')">MTN Mobile Money (Ghana)<span>▼</span></div><div class="payment-details" id="mtn">DM on Telegram for guidance.</div></li>
+            <li><div class="payment-header" onclick="toggleDetails('bank')">Bank Transfer (Nigeria)<span>▼</span></div><div class="payment-details" id="bank">DM on Telegram for guidance.</div></li>
+          </ul>
+          <ul class="payments-list">
+            <li><div class="payment-header" onclick="toggleDetails('mpesa')">M-Pesa<span>▼</span></div><div class="payment-details" id="mpesa"><strong>Name:</strong> ZIPPORAH JOSHUA<br><strong>Number:</strong> +254706415082<br><button class="copy-btn" onclick="copyText('+254706415082','mpesa')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('airtel')">Airtel Money<span>▼</span></div><div class="payment-details" id="airtel"><strong>Name:</strong> COLLINS MUTHURI<br><strong>Number:</strong> +254784223005<br><button class="copy-btn" onclick="copyText('+254784223005','airtel')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('minipay')">MiniPay<span>▼</span></div><div class="payment-details" id="minipay"><strong>Number:</strong> +254114687523<br><button class="copy-btn" onclick="copyText('+254114687523','minipay')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('yellowcard')">Yellow Card<span>▼</span></div><div class="payment-details" id="yellowcard"><strong>Email:</strong> muthuricollins771@gmail.com<br><button class="copy-btn" onclick="copyText('muthuricollins771@gmail.com','yellowcard')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('paypal')">Paypal<span>▼</span></div><div class="payment-details" id="paypal"><strong>Email:</strong> kinyaoneis@gmail.com<br><button class="copy-btn" onclick="copyText('kinyaoneis@gmail.com','paypal')">Copy</button></div></li>
+            <li><div class="payment-header" onclick="toggleDetails('bybitpay')">Bybit Pay<span>▼</span></div><div class="payment-details" id="bybitpay"><strong>UID:</strong> 177383003<br><button class="copy-btn" onclick="copyText('177383003','bybitpay')">Copy</button></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+        <footer>
+  <p>After payment, send proof on Telegram:</p>
+  <a class="btn" href="https://t.me/on_collee" target="_blank" rel="noopener noreferrer">Send Proof (Telegram)</a>
+  <p style="margin-top:15px;">
+    <span style="color: #000; font-weight:bold;">GAMBLE RESPONSIBLY || 18+</span><br>
+    © 2025 COLIN BRIGHT TIPS. All rights reserved.
+  </p>
+</footer>
+
   </div>
 
   <script>
@@ -155,22 +403,22 @@
       const elem = document.getElementById(id);
       const header = elem.previousElementSibling;
       if (elem.classList.contains("show")) {
-        elem.classList.remove("show"); header.classList.remove("open");
+        elem.classList.remove("show");
+        header.classList.remove("open");
       } else {
         document.querySelectorAll(".payment-details").forEach(d => d.classList.remove("show"));
         document.querySelectorAll(".payment-header").forEach(h => h.classList.remove("open"));
-        elem.classList.add("show"); header.classList.add("open");
+        elem.classList.add("show");
+        header.classList.add("open");
       }
     }
 
     function copyText(text, id) {
       navigator.clipboard.writeText(text).then(() => {
         const btn = document.querySelector(`#${id} .copy-btn`);
-        if (btn) {
-          const original = btn.textContent;
-          btn.textContent = "Copied!";
-          setTimeout(() => (btn.textContent = original), 1500);
-        }
+        const original = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => (btn.textContent = original), 1500);
       });
     }
 
@@ -178,10 +426,18 @@
     const popup = document.getElementById("popupPhoto");
     const popupImg = document.getElementById("popupImg");
 
-    groupPhoto.addEventListener("click", () => popup.classList.toggle("show"));
-    popupImg.addEventListener("click", () => popup.classList.remove("show"));
+    groupPhoto.addEventListener("click", () => {
+      popup.classList.toggle("show");
+    });
+
+    popupImg.addEventListener("click", () => {
+      popup.classList.remove("show");
+    });
+
     document.addEventListener("click", (e) => {
-      if (!groupPhoto.contains(e.target) && !popup.contains(e.target)) popup.classList.remove("show");
+      if (!groupPhoto.contains(e.target) && !popup.contains(e.target)) {
+        popup.classList.remove("show");
+      }
     });
   </script>
 </body>
