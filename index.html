@@ -73,15 +73,12 @@
       text-align: center;
       margin: 15px 0;
     }
-    /* minimal change: ensure join link is on top and clickable on mobile */
     .join-telegram a {
       font-family: "Times New Roman", serif;
       font-weight: bold;
       color: #fff;
       font-size: 18px;
       text-decoration: none;
-      position: relative;
-      z-index: 3000;
     }
     .card {
       background: #fff;
@@ -196,11 +193,6 @@
       border: 2px solid var(--fancy-text);
       text-align: center;
     }
-    /* minimal change: ensure footer send-proof button is on top and clickable */
-    footer .btn {
-      position: relative;
-      z-index: 3000;
-    }
     .popup {
       position: absolute;
       top: 100px;
@@ -214,15 +206,11 @@
       border: 3px solid var(--fancy-text);
       transition: transform 0.3s, opacity 0.3s;
       opacity: 0;
-      /* minimal change: when hidden, do not capture pointer events (won't block links) */
-      pointer-events: none;
     }
     .popup.show {
       display: block;
       transform: scale(1);
       opacity: 1;
-      /* allow interaction when visible */
-      pointer-events: auto;
     }
     .popup img {
       width: 120px;
@@ -315,7 +303,7 @@
 
     <!-- JOIN TELEGRAM -->
     <div class="join-telegram">
-      <a href="https://t.me/+qB9x_srqjgc5NzU0" target="_blank" rel="noopener noreferrer">👉Join our Telegram Channel Here</a>
+      <a href="tg://resolve?domain=qB9x_srqjgc5NzU0">👉Join our Telegram Channel Here</a>
     </div>
 
     <!-- ABOUT SECTION -->
@@ -387,56 +375,48 @@
       </div>
     </section>
 
-        <footer>
-  <p>After payment, send proof on Telegram:</p>
-  <a class="btn" href="https://t.me/on_collee" target="_blank" rel="noopener noreferrer">Send Proof (Telegram)</a>
-  <p style="margin-top:15px;">
-    <span style="color: #000; font-weight:bold;">GAMBLE RESPONSIBLY || 18+</span><br>
-    © 2025 COLIN BRIGHT TIPS. All rights reserved.
-  </p>
-</footer>
-
+    <footer>
+      <p>After payment, send proof on Telegram:</p>
+      <a class="btn" href="tg://resolve?domain=on_collee">Send Proof (Telegram)</a>
+      <p style="margin-top:15px;">
+        <span style="color: #000; font-weight:bold;">GAMBLE RESPONSIBLY || 18+</span><br>
+        © 2025 COLIN BRIGHT TIPS. All rights reserved.
+      </p>
+    </footer>
   </div>
 
   <script>
     function toggleDetails(id) {
-      const elem = document.getElementById(id);
-      const header = elem.previousElementSibling;
-      if (elem.classList.contains("show")) {
-        elem.classList.remove("show");
-        header.classList.remove("open");
-      } else {
-        document.querySelectorAll(".payment-details").forEach(d => d.classList.remove("show"));
-        document.querySelectorAll(".payment-header").forEach(h => h.classList.remove("open"));
-        elem.classList.add("show");
-        header.classList.add("open");
-      }
-    }
-
-    function copyText(text, id) {
-      navigator.clipboard.writeText(text).then(() => {
-        const btn = document.querySelector(`#${id} .copy-btn`);
-        const original = btn.textContent;
-        btn.textContent = "Copied!";
-        setTimeout(() => (btn.textContent = original), 1500);
+      document.querySelectorAll('.payment-details').forEach(el => {
+        if (el.id === id) {
+          el.classList.toggle('show');
+          document.querySelector('[onclick="toggleDetails(\\'' + id + '\\')"]').classList.toggle('open');
+        } else {
+          el.classList.remove('show');
+          let header = document.querySelector('[onclick="toggleDetails(\\'' + el.id + '\\')"]');
+          if (header) header.classList.remove('open');
+        }
       });
     }
-
-    const groupPhoto = document.getElementById("groupPhoto");
-    const popup = document.getElementById("popupPhoto");
-    const popupImg = document.getElementById("popupImg");
-
-    groupPhoto.addEventListener("click", () => {
-      popup.classList.toggle("show");
+    function copyText(text, id) {
+      navigator.clipboard.writeText(text).then(() => {
+        let btn = document.querySelector('#' + id + ' .copy-btn');
+        btn.innerText = "Copied!";
+        setTimeout(() => { btn.innerText = "Copy"; }, 2000);
+      });
+    }
+    const groupPhoto = document.getElementById('groupPhoto');
+    const popupPhoto = document.getElementById('popupPhoto');
+    const popupImg = document.getElementById('popupImg');
+    groupPhoto.addEventListener('click', () => {
+      popupPhoto.classList.add('show');
     });
-
-    popupImg.addEventListener("click", () => {
-      popup.classList.remove("show");
+    popupImg.addEventListener('click', () => {
+      popupPhoto.classList.remove('show');
     });
-
-    document.addEventListener("click", (e) => {
-      if (!groupPhoto.contains(e.target) && !popup.contains(e.target)) {
-        popup.classList.remove("show");
+    document.addEventListener('click', (e) => {
+      if (!popupPhoto.contains(e.target) && e.target !== groupPhoto) {
+        popupPhoto.classList.remove('show');
       }
     });
   </script>
